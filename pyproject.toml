@@ -1,0 +1,27 @@
+[build-system]
+requires = [
+    "setuptools>=65.4.0",
+    "pandas >= 1.4.4",
+    "numpy >= 1.21.5",
+    "netcdf4 >= 1.5.7"
+]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "XCO2_daily_data_extraction"
+version = "0.0.1"
+authors = [
+  { name="Henrique Fontellas Laurito", email="henrique.f.laurito@unesp.br" },
+]
+description = "This package will extract daily data from netCDF4 files downloaded at GES DISC database"
+readme = "README.md"
+requires-python = ">=3.9"
+classifiers = [
+    "Programming Language :: Python :: 3.9",
+    "License :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/pypa/sampleproject"
+"Bug Tracker" = "https://github.com/pypa/sampleproject/issues"
