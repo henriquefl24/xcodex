@@ -6,7 +6,7 @@ from numpy import where, isclose, array, NaN
 from ..Util.date import calendar_days
 from ..Util.missing import new_subset
 from ..Util.var_imp import variables
-from ..Util.make_Dataframe import make_df
+from ..Util.make_Dataframe import make_dataframe
 from ..Util.check import check_date
 
 
@@ -71,14 +71,15 @@ def xco2_extract(path: list[str],
                 day_test.append(datetime.strptime(str(calendar_list[e]), fmt).timetuple().tm_mday)
                 jd.append(datetime.strptime(str(calendar_list[e]), fmt).timetuple().tm_yday)
 
-                # netCDF4 defined date
+                # netCdataframe4 defined date
 
                 year.append(str(xco2_netCDF4['time'].begin_date)[0:4])
                 month.append(str(xco2_netCDF4['time'].begin_date)[4:6])
                 day.append(str(xco2_netCDF4['time'].begin_date)[6:])
 
-                if int(day[d]) != day_test[d] or int(year[d]) != year_test[
-                    d]:  # Comparison of calendar day with file day
+                # Comparison of calendar day with file day
+
+                if int(day[d]) != day_test[d] or int(year[d]) != year_test[d]:
 
                     lat_index.append(NaN)
                     lon_index.append(NaN)
@@ -122,7 +123,11 @@ def xco2_extract(path: list[str],
 
                     # Assigning the values of XCO2 and XCO2_PREC referring to the index found
 
-                    XCO2_values.append(xco2_netCDF4['XCO2'][0][lat_index[i]][lon_index[i]] * 10 ** 6)
+                    try:
+                        XCO2_values.append(xco2_netCDF4['XCO2'][0][lat_index[i]][lon_index[i]] * 10 ** 6)
+                    except IndexError:
+                        i += len(kwargs.items())
+                        XCO2_values.append(xco2_netCDF4['XCO2'][0][lat_index[i]][lon_index[i]] * 10 ** 6)
 
                     # Error handling to check the existence of the XCO2_PREC value
 
@@ -141,10 +146,16 @@ def xco2_extract(path: list[str],
             if e >= end:
                 break
 
-    dataframe = make_df(city, jd, day, month, year, lat, lon, lat_index,
-                        lon_index, XCO2_values, XCO2PREC_values)
+    dataframe = make_dataframe(city, jd, day, month, year, lat, lon, lat_index,
+                               lon_index, XCO2_values, XCO2PREC_values)
 
     if missing_data:
         new_subset(dataframe)
+
+    # Padronizing values to float
+
+    dataframe.set_index('city', inplace=True, drop=True)
+    dataframe = dataframe.astype(float)
+    dataframe.reset_index(inplace=True, drop=False)
 
     return dataframe
