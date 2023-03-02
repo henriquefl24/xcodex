@@ -1,14 +1,16 @@
 ![](logo_gas.jpg) <br>
 
+# **Welcome to XCODEX - XCO2 Daily EXtractor**
+
 # Hello world!
 
 Hi there! My name is Henrique.
 
 The creation of this Python package was intended to create a simple solution for extracting daily data from XCO2 retrieved from the GES DISC platform.
 
-I will leave the GitHub profile of the researchers who helped me in the graphical visualization of the data and the citation of the OCO-2 project.
+I will attach the links containing the GitHub profile of the researchers who helped me in the graphical visualization of the data and the citation of the OCO-2 project.
 
-I hope it's useful to you. Long live science!
+I hope it's useful to you. **Long live science!**
 
 # *GitHub profiles*:
 

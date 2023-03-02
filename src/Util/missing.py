@@ -53,5 +53,5 @@ def new_subset(dataframe):
     f.close()
 
     print(f"Number of missing days: {len(dataframe)}"
-          f"New subset created")
+          f"\nNew subset created")
 

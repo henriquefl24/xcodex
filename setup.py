@@ -9,7 +9,7 @@ DESCRIPTION = """This package will extract daily data from netCDF4 files downloa
 
 # Setting up
 
-setup(name='xco2_daily_data',
+setup(name='XCODEX',
       version=VERSION,
       author='HenriqueLaurito_unesp (Henrique F. Laurito)',
       author_email='<henrique.f.laurito@unesp.br>',
