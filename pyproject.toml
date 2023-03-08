@@ -1,14 +1,16 @@
 [build-system]
 requires = [
-    "setuptools>=65.4.0",
+    "setuptools >= 65.4.0",
     "pandas >= 1.4.4",
     "numpy >= 1.21.5",
-    "netcdf4 >= 1.5.7"
+    "netcdf4 >= 1.5.7",
+    "plotly >= 5.9.0",
+    "jupyter >= 1.0.0"
 ]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "XCO2_daily_data_extraction"
+name = "XCODEX"
 version = "0.0.1"
 authors = [
   { name="Henrique Fontellas Laurito", email="henrique.f.laurito@unesp.br" },
@@ -23,5 +25,5 @@ classifiers = [
 ]
 
 [project.urls]
-"Homepage" = "https://github.com/pypa/sampleproject"
-"Bug Tracker" = "https://github.com/pypa/sampleproject/issues"
+"Homepage" = "https://github.com/henriquefl24/xcodex"
+"Bug Tracker" = "https://github.com/henriquefl24/xcodex/issues"

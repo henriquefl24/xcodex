@@ -11,10 +11,10 @@ DESCRIPTION = """This package will extract daily data from netCDF4 files downloa
 
 setup(name='XCODEX',
       version=VERSION,
-      author='HenriqueLaurito_unesp (Henrique F. Laurito)',
-      author_email='<henrique.f.laurito@unesp.br>',
+      author=['henriquefl24@git', "GlaucoRolim@git"],
+      author_email=["<henrique.f.laurito@unesp.br>", "<glauco.rolim@unesp.br>"],
       description=DESCRIPTION,
-      packages=find_packages(where='src'),
+      packages=find_packages(where='setup.py'),
       keywords=['python', 'NASA', 'GES DISC', 'XCO2', 'daily', 'OCO2', 'jupyter notebook'],
       classifiers=[
           "Development Status :: 4 - Beta",
