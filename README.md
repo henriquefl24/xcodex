@@ -8,12 +8,13 @@ Hi there! My name is Henrique.
 
 The creation of this Python package was intended to create a simple solution for extracting daily data from XCO2 retrieved from the GES DISC platform.
 
-I will attach the links containing the GitHub profile of the researchers who helped me in the graphical visualization of the data and the citation of the OCO-2 project.
+I will attach the links containing the GitHub profile of the researchers who helped me in the development of this package along with graphical visualization of the data and the citation of the OCO-2 project.
 
 I hope it's useful to you. **Long live science!**
 
 # *GitHub profiles*:
 
+https://github.com/GlaucoRolim (Co-author) <br>
 https://github.com/kyuenjpl/ARSET_XCO2 <br>
 https://github.com/sagarlimbu0/OCO2-OCO3
 
