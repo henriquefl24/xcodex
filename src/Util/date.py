@@ -1,4 +1,4 @@
-def calendar_days(start, end):
+def calendar_days(start:str, end:int):
     from pandas import to_datetime, to_timedelta
     from numpy import arange
 

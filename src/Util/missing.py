@@ -1,4 +1,5 @@
-def new_subset(dataframe):
+from pandas import DataFrame
+def new_subset(dataframe:DataFrame):
     from pandas import isna
     from os import remove
 
