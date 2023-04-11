@@ -15,7 +15,7 @@ def xco2_extract(path: list[str],
                  end: int,
                  missing_data=False,
                  **kwargs: dict) -> DataFrame:
-    r"""This method will extract daily XCO2 data from the netCdataframe4 files.
+    """This method will extract daily XCO2 data from the netCDF4 files.
 
     Args:
         path (list[str]):    Path to directory containing files .nc4 (e.g. glob.glob(r"C:\user\...\*.nc4")
@@ -39,9 +39,9 @@ def xco2_extract(path: list[str],
     """
 
     city, lat, lat_index, lon, lon_index, XCO2_values, XCO2PREC_values, year, \
-        year_test, month, month_test, day, day_test, jd, fmt = variables()
+        year_test, month, month_test, day, day_test, jd, fmt = variables() # Variables declaration
 
-    calendar_list = calendar_days(start, end)
+    calendar_list = calendar_days(start, end) # Creating a calendar for further comparison
 
     c = d = e = 0  # Declaration of counters used in the loop
 
@@ -51,14 +51,14 @@ def xco2_extract(path: list[str],
 
         xco2_netCDF4 = Dataset(path[c])
 
-        if check_date(calendar_list, xco2_netCDF4):
+        if check_date(calendar_list, xco2_netCDF4): # This step will check the current netCDF date (year, month, day)
             c += 1
             pass
         else:
 
             for k, v in kwargs.items():
 
-                # Saving municipalities and coordinates in deque
+                # Saving location and coordinates in deque
 
                 city.append(k)
                 lat.append(v[0])
@@ -71,13 +71,13 @@ def xco2_extract(path: list[str],
                 day_test.append(datetime.strptime(str(calendar_list[e]), fmt).timetuple().tm_mday)
                 jd.append(datetime.strptime(str(calendar_list[e]), fmt).timetuple().tm_yday)
 
-                # netCdataframe4 defined date
+                # netCDF4 defined date
 
                 year.append(str(xco2_netCDF4['time'].begin_date)[0:4])
                 month.append(str(xco2_netCDF4['time'].begin_date)[4:6])
                 day.append(str(xco2_netCDF4['time'].begin_date)[6:])
 
-                # Comparison of calendar day with file day
+                # Comparison between calendar date with netCDF date
 
                 if int(day[d]) != day_test[d] or int(year[d]) != year_test[d]:
 
@@ -103,7 +103,7 @@ def xco2_extract(path: list[str],
 
                 else:
 
-                    # Defining the Lat and Lon Indexes to find values in the netCdataframe4 file
+                    # Defining the latitude and longitude Indexes to find values in the netCDF4 file
 
                     lat_index.append(
                         where(
@@ -147,12 +147,12 @@ def xco2_extract(path: list[str],
                 break
 
     dataframe = make_dataframe(city, jd, day, month, year, lat, lon, lat_index,
-                               lon_index, XCO2_values, XCO2PREC_values)
+                               lon_index, XCO2_values, XCO2PREC_values) # Creating dataframe
 
     if missing_data:
-        new_subset(dataframe)
+        new_subset(dataframe) # This step will create a new_subset.txt for the NaN values
 
-    # Padronizing values to float
+    # Patronizing values to float
 
     dataframe.set_index('city', inplace=True, drop=True)
     dataframe = dataframe.astype(float)

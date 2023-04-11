@@ -1,5 +1,9 @@
-def make_dataframe(city, jd, day, month, year, lat, lon, lat_index, lon_index, XCO2_values, XCO2PREC_values):
-    from pandas import DataFrame
+from pandas import DataFrame
+def make_dataframe(city, jd, day, month, year, lat, lon, lat_index, lon_index, XCO2_values, XCO2PREC_values)->DataFrame:
+    """
+    This method will create a dataframe with the main values, along with the NaN values
+    :return: dataframe
+    """
 
     dataframe = DataFrame()
 

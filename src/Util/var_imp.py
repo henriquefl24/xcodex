@@ -1,5 +1,10 @@
 def variables():
-    
+    """
+    This method will pack all the variables used in the main method xco2_extract()
+    along with the format
+
+    :return: packed deque()
+    """
     from collections import deque
     
     city = deque()

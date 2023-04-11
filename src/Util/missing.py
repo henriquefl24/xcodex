@@ -1,5 +1,10 @@
 from pandas import DataFrame
-def new_subset(dataframe:DataFrame):
+def new_subset(dataframe:DataFrame)->None:
+    """
+    Creating a new_subset.txt based on the NaN values of the main DataFrame.
+    The file will be saved on the current folder of the user
+    :return: new_subset.txt
+    """
     from pandas import isna
     from os import remove
 
