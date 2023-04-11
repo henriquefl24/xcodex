@@ -2,8 +2,6 @@
 
 # **Welcome to XCODEX - XCO2 Daily EXtractor**
 
-# Hello world!
-
 Hi there! My name is Henrique.
 
 The creation of this Python package was intended to create a simple solution for extracting daily data from XCO2 retrieved from the GES DISC platform.
@@ -17,6 +15,14 @@ I hope it's useful to you. **Long live science!**
 https://github.com/GlaucoRolim (Co-author) <br>
 https://github.com/kyuenjpl/ARSET_XCO2 <br>
 https://github.com/sagarlimbu0/OCO2-OCO3
+
+# *Please, cite this package as:*
+
+Laurito, H., Rolim, G., 2023. Extracting XCO2-NASA Daily data with XCODEX:
+A Python package designed for data extraction and structuration.<br>
+Jaboticabal, SP, BR, Computers and Electronics in Agriculture,
+Accessed: dd/mm/yyyy,
+doi:
 
 # **Data source citation**:
 

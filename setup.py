@@ -15,7 +15,7 @@ setup(name='XCODEX',
       author_email=["<henrique.f.laurito@unesp.br>", "<glauco.rolim@unesp.br>"],
       description=DESCRIPTION,
       packages=find_packages(where='setup.py'),
-      keywords=['python', 'NASA', 'GES DISC', 'XCO2', 'daily', 'OCO2', 'jupyter notebook'],
+      keywords=['python', 'NASA', 'GES DISC', 'XCO2', 'daily', 'OCO-2', 'jupyter notebook','XCODEX'],
       classifiers=[
           "Development Status :: 4 - Beta",
           "Intended Audience :: Scientific Community",
@@ -27,5 +27,5 @@ setup(name='XCODEX',
       ],
       package_dir={"": "src"},
       python_requires=">=3.9",
-      install_requires=['pandas', 'numpy', 'netCDF4', 'plotly', 'jupyter']
+      install_requires=['pandas', 'netCDF4', 'numpy', 'jupyter']
       )
