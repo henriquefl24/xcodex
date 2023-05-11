@@ -1,1 +1,4 @@
-
+https://pypi.org/project/pandas/
+https://pypi.org/project/numpy/
+https://pypi.org/project/netCDF4/
+https://pypi.org/project/jupyter/

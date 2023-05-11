@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: test1-xcodex
-Version: 0.0.11
+Version: 0.0.12
 Summary: This package will extract daily data from netCDF4 files downloaded at GES DISC database
 Author: henriquefl24@git
 Author-email: Henrique Fontellas Laurito <henrique.f.laurito@unesp.br>, Glauco de Souza Rolim <glauco.rolim@unesp.br>
@@ -10,7 +10,7 @@ Keywords: python,NASA,GES DISC,XCO2,daily,OCO-2,jupyter notebook,xcodex
 Classifier: Development Status :: 4 - Beta
 Classifier: Intended Audience :: Developers
 Classifier: License :: OSI Approved :: MIT License
-Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.11
 Classifier: Operating System :: Unix
 Classifier: Operating System :: MacOS :: MacOS X
 Classifier: Operating System :: Microsoft :: Windows
