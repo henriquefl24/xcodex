@@ -1,6 +1,6 @@
-def calendar_days(start:str, end:int)->None:
+def calendar_days(start: str, end: int) -> list:
     """
-    This method will create an union of calendar dates for further comparison.
+    This method will create a union of calendar dates for further comparison.
     The main advantage of this method is to consider the leap years.
     :param start: str: i.e.: "1st of january, 2015"
     :param end: int: i.e.: 365 days

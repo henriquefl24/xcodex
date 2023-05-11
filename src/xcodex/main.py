@@ -3,11 +3,11 @@ from netCDF4 import Dataset
 from datetime import datetime
 from numpy import where, isclose, array, NaN
 
-from ..Util.date import calendar_days
-from ..Util.missing import new_subset
-from ..Util.var_imp import variables
-from ..Util.make_Dataframe import make_dataframe
-from ..Util.check import check_date
+from Util.date import calendar_days
+from Util.missing import new_subset
+from Util.var_imp import variables
+from Util.make_Dataframe import make_dataframe
+from Util.check import check_date
 
 
 def xco2_extract(path: list[str],
@@ -15,7 +15,7 @@ def xco2_extract(path: list[str],
                  end: int,
                  missing_data=False,
                  **kwargs: dict) -> DataFrame:
-    """This method will extract daily XCO2 data from the netCDF4 files.
+    r"""This method will extract daily XCO2 data from the netCDF4 files.
 
     Args:
         path (list[str]):    Path to directory containing files .nc4 (e.g. glob.glob(r"C:\user\...\*.nc4")
