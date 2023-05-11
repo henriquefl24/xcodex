@@ -1,4 +1,4 @@
-from setuptools import setup, find_packages
+from setuptools import setup
 
 VERSION = "0.0.1"
 DESCRIPTION = """This package will extract daily data from netCDF4 files downloaded at GES DISC database"
