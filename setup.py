@@ -1,5 +1,5 @@
 from setuptools import setup
-VERSION = "0.0.4"
+VERSION = "0.0.10"
 DESCRIPTION = """This package will extract daily data from netCDF4 files downloaded at GES DISC database"
               Source citation: Brad Weir, Lesley Ott and OCO-2 Science Team (2022), OCO-2 GEOS Level 3 daily,
               0.5x0.625 assimilated CO2 V10r, Greenbelt, MD, USA, Goddard Earth Sciences Data
@@ -25,6 +25,6 @@ setup(name='test1_xcodex',
           "Operating System :: Microsoft :: Windows"],
       package_dir={"xcodex": "src/xcodex",
                    "Util":   "src/Util"},
-      python_requires=">=3.9",
-      install_requires=['netCDF4', 'numpy', 'jupyter']
+      python_requires=">=3.11",
+      install_requires=['pandas', 'netCDF4', 'numpy', 'jupyter']
       )

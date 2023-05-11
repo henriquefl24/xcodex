@@ -5,13 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a74e8d25-b3d1-4a88-85a1-5550da11c878" name="Changes" comment="11/05">
-      <change afterPath="$PROJECT_DIR$/dist/test1_xcodex-0.0.3.tar.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/test1_xcodex-0.0.10.tar.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/test1_xcodex-0.0.9.tar.gz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/xcodex-0.0.1.tar.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/xcodex.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/xcodex.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/test1_xcodex-0.0.1.tar.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/test1_xcodex-0.0.2.tar.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/test1_xcodex-0.0.3.tar.gz" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/pyproject.toml" beforeDir="false" afterPath="$PROJECT_DIR$/pyproject.toml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/xcodex.egg-info/PKG-INFO" beforeDir="false" afterPath="$PROJECT_DIR$/xcodex.egg-info/PKG-INFO" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test1_xcodex.egg-info/PKG-INFO" beforeDir="false" afterPath="$PROJECT_DIR$/test1_xcodex.egg-info/PKG-INFO" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,12 +46,16 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2Nn6EhY8xLZ7v84MR9l9NkaCzKv" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
@@ -85,7 +94,8 @@
       <workItem from="1683826929917" duration="934000" />
       <workItem from="1683828152155" duration="135000" />
       <workItem from="1683828575447" duration="720000" />
-      <workItem from="1683829843166" duration="415000" />
+      <workItem from="1683829843166" duration="1808000" />
+      <workItem from="1683832606889" duration="718000" />
     </task>
     <task id="LOCAL-00001" summary="11/05">
       <created>1683819841004</created>
@@ -136,13 +146,21 @@
       <option name="project" value="LOCAL" />
       <updated>1683827359936</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="11/05">
+      <created>1683830380058</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1683830380058</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="11/05" />
     <option name="LAST_COMMIT_MESSAGE" value="11/05" />
   </component>
