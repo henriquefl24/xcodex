@@ -4,5 +4,5 @@
     <option name="show" value="ASK" />
     <option name="description" value="" />
   </component>
-  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.11 (2)" project-jdk-type="Python SDK" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_20" project-jdk-name="Python 3.10" project-jdk-type="Python SDK" />
 </project>
