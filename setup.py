@@ -18,7 +18,7 @@ setup(name='xcodex',
       keywords=['python', 'NASA', 'GES DISC', 'XCO2', 'daily', 'OCO-2', 'jupyter notebook', 'xcodex'],
       classifiers=[
           "Development Status :: 4 - Beta",
-          "Intended Audience :: Scientific Community",
+          "Intended Audience :: Developers",
           "License :: OSI Approved :: MIT License",
           "Programming Language :: Python :: 3.9",
           "Operating System :: Unix",
