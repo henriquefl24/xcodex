@@ -1,4 +1,4 @@
-![](logo_gas.jpg) <br>
+<img height="180" src="logo_gas.jpg" width="450"/> <br>
 
 # **Welcome to XCODEX - XCO2 Daily EXtractor**
 
