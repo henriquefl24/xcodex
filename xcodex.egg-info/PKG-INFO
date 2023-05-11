@@ -7,9 +7,13 @@ Author-email: Henrique Fontellas Laurito <henrique.f.laurito@unesp.br>, Glauco d
 Project-URL: Homepage, https://github.com/henriquefl24/xcodex
 Project-URL: Bug Tracker, https://github.com/henriquefl24/xcodex/issues
 Keywords: python,NASA,GES DISC,XCO2,daily,OCO-2,jupyter notebook,xcodex
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
 Classifier: Programming Language :: Python :: 3.9
-Classifier: License :: MIT License
-Classifier: Operating System :: OS Independent
+Classifier: Operating System :: Unix
+Classifier: Operating System :: MacOS :: MacOS X
+Classifier: Operating System :: Microsoft :: Windows
 Requires-Python: >=3.9
 Description-Content-Type: text/markdown
 License-File: LICENSE

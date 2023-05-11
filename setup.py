@@ -22,9 +22,8 @@ setup(name='xcodex',
           "License :: OSI Approved :: MIT License",
           "Programming Language :: Python :: 3.9",
           "Operating System :: Unix",
-          "Operating System :: MacOS :: MacOS X"
-          "Operating System :: Microsoft :: Windows"
-      ],
+          "Operating System :: MacOS :: MacOS X",
+          "Operating System :: Microsoft :: Windows"],
       package_dir={"xcodex": "src/xcodex",
                    "Util":   "src/Util"},
       python_requires=">=3.9",
