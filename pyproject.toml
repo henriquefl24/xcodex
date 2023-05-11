@@ -1,10 +1,13 @@
 [build-system]
-requires = ["pandas", "numpy", "netCDF4", "jupyter"]
+requires = ["pandas==2.0.1",
+			"numpy==1.24.3",
+			"netCDF4==1.6.3",
+			"jupyter==1.0.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "test1_xcodex"
-version = "0.0.10"
+version = "0.0.11"
 authors = [
   {name="Henrique Fontellas Laurito", email="henrique.f.laurito@unesp.br" },
     {name="Glauco de Souza Rolim", email="glauco.rolim@unesp.br"}
