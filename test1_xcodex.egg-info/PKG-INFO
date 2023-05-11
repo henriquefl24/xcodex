@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
-Name: xcodex
-Version: 0.0.2
+Name: test1-xcodex
+Version: 0.0.3
 Summary: This package will extract daily data from netCDF4 files downloaded at GES DISC database
 Author: henriquefl24@git
 Author-email: Henrique Fontellas Laurito <henrique.f.laurito@unesp.br>, Glauco de Souza Rolim <glauco.rolim@unesp.br>
