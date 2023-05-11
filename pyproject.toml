@@ -1,19 +1,17 @@
 [build-system]
 requires = [
-    "setuptools >= 65.4.0",
-    "pandas >= 1.4.4",
-    "numpy >= 1.21.5",
-    "netcdf4 >= 1.5.7",
-    "plotly >= 5.9.0",
+    "pandas >= 1.5.3",
+    "numpy >= 1.24.3",
+    "netcdf4 >= 1.6.3",
     "jupyter >= 1.0.0"
 ]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "XCODEX"
+name = "xcodex"
 version = "0.0.1"
 authors = [
-  { name="Henrique Fontellas Laurito", email="henrique.f.laurito@unesp.br" },
+  {name="Henrique Fontellas Laurito", email="henrique.f.laurito@unesp.br" },
     {name="Glauco de Souza Rolim", email="glauco.rolim@unesp.br"}
 ]
 description = "This package will extract daily data from netCDF4 files downloaded at GES DISC database"

@@ -9,13 +9,13 @@ DESCRIPTION = """This package will extract daily data from netCDF4 files downloa
 
 # Setting up
 
-setup(name='XCODEX',
+setup(name='xcodex',
       version=VERSION,
-      author=['henriquefl24@git', "GlaucoRolim@git"],
-      author_email=["<henrique.f.laurito@unesp.br>", "<glauco.rolim@unesp.br>"],
+      author='henriquefl24@git',
+      author_email="<henrique.f.laurito@unesp.br>",
       description=DESCRIPTION,
-      packages=find_packages(where='setup.py'),
-      keywords=['python', 'NASA', 'GES DISC', 'XCO2', 'daily', 'OCO-2', 'jupyter notebook','XCODEX'],
+      packages=['xcodex', "Util"],
+      keywords=['python', 'NASA', 'GES DISC', 'XCO2', 'daily', 'OCO-2', 'jupyter notebook', 'XCODEX'],
       classifiers=[
           "Development Status :: 4 - Beta",
           "Intended Audience :: Scientific Community",
@@ -25,7 +25,8 @@ setup(name='XCODEX',
           "Operating System :: MacOS :: MacOS X"
           "Operating System :: Microsoft :: Windows"
       ],
-      package_dir={"": "src"},
+      package_dir={"xcodex": "src/xcodex",
+                   "Util":   "src/Util"},
       python_requires=">=3.9",
       install_requires=['pandas', 'netCDF4', 'numpy', 'jupyter']
       )
