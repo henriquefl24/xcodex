@@ -6,7 +6,7 @@ requires = ["pandas==2.0.1",
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "test1_xcodex"
+name = "test2_xcodex"
 version = "0.0.1"
 authors = [
   {name="Henrique Fontellas Laurito", email="henrique.f.laurito@unesp.br" },

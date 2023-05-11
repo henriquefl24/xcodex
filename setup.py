@@ -8,7 +8,7 @@ DESCRIPTION = """This package will extract daily data from netCDF4 files downloa
 
 # Setting up
 
-setup(name='test1_xcodex',
+setup(name='test2_xcodex',
       version=VERSION,
       author='henriquefl24@git',
       author_email="<henrique.f.laurito@unesp.br>",

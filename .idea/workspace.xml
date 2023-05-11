@@ -5,6 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a74e8d25-b3d1-4a88-85a1-5550da11c878" name="Changes" comment="11/05">
+      <change afterPath="$PROJECT_DIR$/dist/test2_xcodex-0.0.1.tar.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test2_xcodex.egg-info/PKG-INFO" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test2_xcodex.egg-info/SOURCES.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test2_xcodex.egg-info/dependency_links.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test2_xcodex.egg-info/requires.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test2_xcodex.egg-info/top_level.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pyproject.toml" beforeDir="false" afterPath="$PROJECT_DIR$/pyproject.toml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup.py" afterDir="false" />
     </list>
@@ -85,7 +92,7 @@
       <workItem from="1683828152155" duration="135000" />
       <workItem from="1683828575447" duration="720000" />
       <workItem from="1683829843166" duration="1808000" />
-      <workItem from="1683832606889" duration="1898000" />
+      <workItem from="1683832606889" duration="2547000" />
     </task>
     <task id="LOCAL-00001" summary="11/05">
       <created>1683819841004</created>
@@ -164,7 +171,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683834478120</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="11/05">
+      <created>1683834855826</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1683834855826</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
