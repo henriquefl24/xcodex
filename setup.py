@@ -28,5 +28,5 @@ setup(name='xcodex',
       package_dir={"xcodex": "src/xcodex",
                    "Util":   "src/Util"},
       python_requires=">=3.9",
-      install_requires=['pandas', 'netcdf4', 'numpy', 'jupyter']
+      install_requires=['pandas', 'netCDF4', 'numpy', 'jupyter']
       )
