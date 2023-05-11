@@ -1,18 +1,25 @@
 [build-system]
-requires = ["pandas==2.0.1",
-			"numpy==1.24.3",
-			"netCDF4==1.6.3",
-			"jupyter==1.0.0"]
+requires = [
+	"setuptools>=61.0",
+	"pandas==2.0.1",
+	"numpy==1.24.3",
+	"netCDF4==1.6.3",
+	"jupyter==1.0.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "test2_xcodex"
+name = "xcodex"
 version = "0.0.1"
 authors = [
-  {name="Henrique Fontellas Laurito", email="henrique.f.laurito@unesp.br" },
-    {name="Glauco de Souza Rolim", email="glauco.rolim@unesp.br"}
+  {name="Henrique Fontellas Laurito", email="henrique.f.laurito@unesp.br" }
 ]
-description = "This package will extract daily data from netCDF4 files downloaded at GES DISC database"
+description = """This package will extract daily data from netCDF4 files downloaded at GES DISC database"
+
+              Source citation: Brad Weir, Lesley Ott and OCO-2 Science Team (2022), OCO-2 GEOS Level 3 daily,
+              0.5x0.625 assimilated CO2 V10r, Greenbelt, MD, USA, Goddard Earth Sciences Data
+              and Information Services Center (GES DISC), Accessed: 10/31/2022,
+              doi: 10.5067/Y9M4NM9MPCGH"""
+
 readme = "README.md"
 requires-python = ">=3.11"
 classifiers = [

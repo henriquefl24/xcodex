@@ -1,4 +1,5 @@
 from setuptools import setup
+
 VERSION = "0.0.1"
 DESCRIPTION = """This package will extract daily data from netCDF4 files downloaded at GES DISC database"
               Source citation: Brad Weir, Lesley Ott and OCO-2 Science Team (2022), OCO-2 GEOS Level 3 daily,
@@ -8,7 +9,7 @@ DESCRIPTION = """This package will extract daily data from netCDF4 files downloa
 
 # Setting up
 
-setup(name='test2_xcodex',
+setup(name='xcodex',
       version=VERSION,
       author='henriquefl24@git',
       author_email="<henrique.f.laurito@unesp.br>",
@@ -19,12 +20,12 @@ setup(name='test2_xcodex',
           "Development Status :: 4 - Beta",
           "Intended Audience :: Developers",
           "License :: OSI Approved :: MIT License",
-          "Programming Language :: Python :: 3.9",
+          "Programming Language :: Python :: 3.11",
           "Operating System :: Unix",
           "Operating System :: MacOS :: MacOS X",
           "Operating System :: Microsoft :: Windows"],
       package_dir={"xcodex": "src/xcodex",
-                   "Util":   "src/Util"},
+                   "Util": "src/Util"},
       python_requires=">=3.11",
-      install_requires=['pandas', 'netCDF4', 'numpy', 'jupyter']
+      install_requires=['pandas', 'numpy', 'netCDF4', 'jupyter']
       )
