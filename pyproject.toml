@@ -1,6 +1,6 @@
 [build-system]
 requires = [
-    "pandas >= 1.5.3",
+    "pandas >= 2.0.1",
     "numpy >= 1.24.3",
     "netCDF4 >= 1.6.3",
     "jupyter >= 1.0.0"
