@@ -13,9 +13,7 @@ I hope it's useful to you. **Long live science!**
 ## *Instaling the package*
 
 To install the package, use the command:
-
 <br>`pip install xcodex`
-
 
 ## *Using XCODEX*
 
@@ -27,7 +25,7 @@ from xcodex import xco2_extract`
 ```
 
 ```
-arquive_folder = glob(r"path\to\file\...\*.nc4"))
+arquive_folder = glob(r"path\to\file\...\*.nc4")
 
 df = xco2_extract(
                   path=arquive_folder,
@@ -59,10 +57,7 @@ https://github.com/sagarlimbu0/OCO2-OCO3
 ### *Please, cite this package as:*
 
 Laurito, H., Rolim, G., 2023. Extracting XCO2-NASA Daily data with XCODEX:
-A Python package designed for data extraction and structuration.<br>
-Jaboticabal, SP, BR, Computers and Electronics in Agriculture,
-Accessed: dd/mm/yyyy,
-doi:
+A Python package designed for data extraction and structuration. Jaboticabal, SP, BR, (...)
 
 ### **Data source citation**:
 
