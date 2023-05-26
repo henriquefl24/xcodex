@@ -1,5 +1,6 @@
-setuptools==67.7.2
+setuptools~=67.7.2.post20230511
 pandas==2.0.1
 numpy==1.24.3
 netCDF4==1.6.3
 jupyter==1.0.0
+requests~=2.29.0
