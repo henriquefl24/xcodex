@@ -21,7 +21,6 @@ def make_dataframe(city, jd, day, month, year, lat, lon, lat_index, lon_index, X
     Returns: Dataframe
 
     """
-    from pandas import DataFrame
 
     dataframe = DataFrame()
 
