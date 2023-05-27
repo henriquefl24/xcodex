@@ -8,6 +8,7 @@ from Util.var_imp import variables
 from Util.make_Dataframe import make_dataframe
 from Util.check import check_date
 
+
 def xco2_extract(path: list[str],
                  start: str,
                  end: int,
@@ -148,7 +149,8 @@ def xco2_extract(path: list[str],
                                lon_index, XCO2_values, XCO2PREC_values)
 
     if end > len(path):
-        print('\033[91m' + "\n### WARNING! Incomplete dataframe. Please, adjust your data ###\n" + '\033[0m')
+        print('\033[91m' + "\nWARNING! Incomplete dataframe.\n"
+                           "There might be missing files or the date isn't avaliable yet\n" + '\033[0m')
         print(f'End of data extracting: {end}\n'
               f'Amount of available files: {len(path)}\n')
 
