@@ -9,22 +9,20 @@ def download(links: list):
     from Util.create_dodsrc import create_dodsrc
     from Util.create_netrc import create_netrc
     from Util.download_file_progress import download_file_with_progress
-    from Util.credential import test_credentials
 
     home_dir = expanduser("~")
     netrc_path = join(home_dir, ".netrc")
     dodsrc_path = join(home_dir, ".dodsrc")
 
-    if not exists(netrc_path) and not exists(dodsrc_path):
-        create_dodsrc()
+    if not exists(netrc_path) or not exists(dodsrc_path):
+        print("Insert your Earthdata credentials:\n")
         username = input("Username: ")
         password = getpass("Password: ")
         if not username or not password:
-            raise Exception("Please insert your EARTHDATA LOGIN authentication in order to continue")
-        elif not test_credentials(username, password):
-            raise Exception("Invalid EARTHDATA LOGIN credentials")
+            raise Exception("Please insert your authentication in order to continue")
         else:
             create_netrc(username=username, password=password)
+            create_dodsrc()
 
     # Check if the specified directory exists and create it if it doesn't
     path = join(getcwd(), "downloaded_data")
