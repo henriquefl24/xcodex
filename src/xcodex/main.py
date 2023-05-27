@@ -39,9 +39,9 @@ def xco2_extract(path: list[str],
     """
 
     city, lat, lat_index, lon, lon_index, XCO2_values, XCO2PREC_values, year, \
-        year_test, month, month_test, day, day_test, jd, fmt = variables() # Variables declaration
+        year_test, month, month_test, day, day_test, jd, fmt = variables()
 
-    calendar_list = calendar_days(start, end) # Creating a calendar for further comparison
+    calendar_list = calendar_days(start, end)
 
     c = d = e = 0  # Declaration of counters used in the loop
 
@@ -51,14 +51,14 @@ def xco2_extract(path: list[str],
 
         xco2_netCDF4 = Dataset(path[c])
 
-        if check_date(calendar_list, xco2_netCDF4): # This step will check the current netCDF date (year, month, day)
+        if check_date(calendar_list, xco2_netCDF4):
             c += 1
             pass
         else:
 
             for k, v in kwargs.items():
 
-                # Saving location and coordinates in deque
+                # Saving municipalities and coordinates in deque
 
                 city.append(k)
                 lat.append(v[0])
@@ -77,7 +77,7 @@ def xco2_extract(path: list[str],
                 month.append(str(xco2_netCDF4['time'].begin_date)[4:6])
                 day.append(str(xco2_netCDF4['time'].begin_date)[6:])
 
-                # Comparison between calendar date with netCDF date
+                # Comparison of calendar day with file day
 
                 if int(day[d]) != day_test[d] or int(year[d]) != year_test[d]:
 
@@ -103,7 +103,7 @@ def xco2_extract(path: list[str],
 
                 else:
 
-                    # Defining the latitude and longitude Indexes to find values in the netCDF4 file
+                    # Defining the Lat and Lon Indexes to find values in the netCDF4 file
 
                     lat_index.append(
                         where(
@@ -147,12 +147,17 @@ def xco2_extract(path: list[str],
                 break
 
     dataframe = make_dataframe(city, jd, day, month, year, lat, lon, lat_index,
-                               lon_index, XCO2_values, XCO2PREC_values) # Creating dataframe
+                               lon_index, XCO2_values, XCO2PREC_values)
+
+    if end > len(path):
+        print('\033[91m' + "\n### WARNING! Incomplete dataframe. Please, adjust your data ###\n" + '\033[0m')
+        print(f'End of data extracting: {end}\n'
+              f'Amount of available files: {len(path)}\n')
 
     if missing_data:
-        new_subset(dataframe) # This step will create a new_subset.txt for the NaN values
+        new_subset(dataframe)
 
-    # Patronizing values to float
+    # Padronizing values to float
 
     dataframe.set_index('city', inplace=True, drop=True)
     dataframe = dataframe.astype(float)
