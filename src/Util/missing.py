@@ -1,5 +1,7 @@
 from pandas import DataFrame
-def new_subset(dataframe:DataFrame)->None:
+
+
+def new_subset(dataframe: DataFrame) -> None:
     """
     Creating a new_subset.txt based on the NaN values of the main DataFrame.
     The file will be saved on the current folder of the user
@@ -61,4 +63,3 @@ def new_subset(dataframe:DataFrame)->None:
 
     print(f"Number of missing days: {len(dataframe)}"
           f"\nNew subset created")
-
