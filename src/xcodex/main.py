@@ -1,7 +1,8 @@
 from pandas import DataFrame
 from netCDF4 import Dataset
-from datetime import datetime
 from numpy import where, isclose, array, NaN
+from datetime import datetime
+import re
 from Util.date import calendar_days
 from Util.missing import new_subset
 from Util.var_imp import variables
@@ -11,7 +12,7 @@ from Util.check import check_date
 
 def xco2_extract(path: list[str],
                  start: str,
-                 end: int,
+                 end: str,
                  missing_data=False,
                  **kwargs: dict) -> DataFrame:
     r"""This method will extract daily XCO2 data from the netCDF4 files.
@@ -19,7 +20,7 @@ def xco2_extract(path: list[str],
     Args:
         path (list[str]):    Path to directory containing files .nc4 (e.g. glob.glob(r"C:\user\...\*.nc4")
         start (str):         Indicates the first day of the collected data (e.g. "1st of January, 2015")
-        end (str):           Number of days desired (e.g. 365)
+        end (str):           Indicates the last day of the collected data (e.g. "31st of January, 2015")
         missing_data (bool): Returns a txt file containing missing data links (Default = False)
         **kwargs (dict):     city=[lat: float(), lon: float()]
 
@@ -41,6 +42,17 @@ def xco2_extract(path: list[str],
         year_test, month, month_test, day, day_test, jd, fmt = variables()
 
     calendar_list = calendar_days(start, end)
+
+    # Remove ordinal suffixes from start and end date strings
+    start = re.sub(r'(st|nd|rd|th)', '', start)
+    end = re.sub(r'(st|nd|rd|th)', '', end)
+
+    # Convert start and end dates to datetime objects
+    start_date = datetime.strptime(start, '%d of %B, %Y')
+    end_date = datetime.strptime(end, '%d of %B, %Y')
+
+    # Calculate the number of days between the start and end dates
+    days_between = (end_date - start_date).days
 
     c = d = e = 0  # Declaration of counters used in the loop
 
@@ -142,13 +154,13 @@ def xco2_extract(path: list[str],
                 c += 1
                 e += 1
 
-            if e >= end:
+            if e > days_between:
                 break
 
     dataframe = make_dataframe(city, jd, day, month, year, lat, lon, lat_index,
                                lon_index, XCO2_values, XCO2PREC_values)
 
-    if end > len(path):
+    if days_between > len(path):
         print('\033[91m' + "\nWARNING! Incomplete dataframe.\n"
                            "There might be missing files or the date isn't avaliable yet\n" + '\033[0m')
         print(f'End of data extracting: {end}\n'
