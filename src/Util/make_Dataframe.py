@@ -1,9 +1,27 @@
 from pandas import DataFrame
-def make_dataframe(city, jd, day, month, year, lat, lon, lat_index, lon_index, XCO2_values, XCO2PREC_values)->DataFrame:
+
+
+def make_dataframe(city, jd, day, month, year, lat, lon, lat_index, lon_index, XCO2_values,
+                   XCO2PREC_values) -> DataFrame:
     """
-    This method will create a dataframe with the main values, along with the NaN values
-    :return: dataframe
+    This method will create the output dataframe
+    Args:
+        city: Pandas series
+        jd: Pandas series
+        day: Pandas series
+        month: Pandas series
+        year: Pandas series
+        lat: Pandas series
+        lon: Pandas series
+        lat_index: Pandas series
+        lon_index: Pandas series
+        XCO2_values: Pandas series
+        XCO2PREC_values: Pandas series
+
+    Returns: Dataframe
+
     """
+    from pandas import DataFrame
 
     dataframe = DataFrame()
 

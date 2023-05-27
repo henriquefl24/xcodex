@@ -1,4 +1,4 @@
-def calendar_days(start: str, end: int) -> list:
+def calendar_days(start: str, end: int):
     """
     This method will create a union of calendar dates for further comparison.
     The main advantage of this method is to consider the leap years.

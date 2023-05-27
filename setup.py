@@ -26,6 +26,6 @@ setup(name='xcodex',
           "Operating System :: Microsoft :: Windows"],
       package_dir={"xcodex": "src/xcodex",
                    "Util": "src/Util"},
-      python_requires=">=3.9",
+      python_requires=">=3.10",
       install_requires=['pandas', 'numpy', 'netCDF4', 'jupyter', 'requests', 'setuptools']
       )
