@@ -14,7 +14,7 @@ setup(name='xcodex',
       author='henriquefl24@git',
       author_email="<henrique.f.laurito@unesp.br>",
       description=DESCRIPTION,
-      packages=["xcodex","Util"],
+      packages=["xcodex", "Util"],
       keywords=['python', 'NASA', 'GES DISC', 'XCO2', 'daily', 'OCO-2', 'jupyter notebook', 'xcodex'],
       classifiers=[
           "Development Status :: 4 - Beta",
@@ -25,7 +25,7 @@ setup(name='xcodex',
           "Operating System :: MacOS :: MacOS X",
           "Operating System :: Microsoft :: Windows"],
       package_dir={"xcodex": "src/xcodex",
-                   "Util":"src/Util"},
+                   "Util": "src/Util"},
       python_requires=">=3.11",
-      install_requires=['pandas', 'numpy', 'netCDF4', 'jupyter']
+      install_requires=['pandas', 'numpy', 'netCDF4', 'jupyter', 'requests']
       )
