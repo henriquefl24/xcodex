@@ -13,7 +13,9 @@ I hope it's useful to you. **Long live science!**
 ## *Instaling the package*
 
 To install the package, use the command:
-````pip install xcodex````
+```angular2html
+pip install xcodex
+```
 ## *Using XCODEX*
 
 There's the possibility to download the .nc4 files directly here:
@@ -65,7 +67,9 @@ latitude and longitude must be in decimal degrees.
 
 for more information, please execute the command: <br>
 
-`help(xco2_extractor)`
+````angular2html
+help(xco2_extractor)
+````
 
 Finally, you will have a `pandas.Dataframe` as result. Now it's up to you how you'll <br>
 handle it. I recomend checking the `Github profiles` below for data visualization.
