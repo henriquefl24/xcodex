@@ -20,8 +20,10 @@ def new_subset(dataframe: DataFrame) -> None:
         link = f"https://oco2.gesdisc.eosdis.nasa.gov/data/OCO2_DATA/OCO2_GEOS_L3CO2_DAY.10r/{year}/oco2_GEOS_L3CO2_day_{year}{month}{day}_B10206Ar.nc4"
         links_list.append(link)
 
+    unique_links = list(set(links_list))
+
     with open('../new_subset.txt', 'w') as f:
-        f.write('\n'.join(links_list))
+        f.write('\n'.join(unique_links))
 
     print(f"Number of missing days: {len(dataframe)}"
           f"\nNew subset created")
