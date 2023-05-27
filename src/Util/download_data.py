@@ -7,9 +7,9 @@ def download_file(start: str, end: int) -> None:
 
     Returns: None
     """
-    from date import calendar_days
-    from generate_links import generate_links
-    from download import download
+    from Util.date import calendar_days
+    from Util.generate_links import generate_links
+    from Util.download import download
 
     date_list = calendar_days(start, end)
     links = generate_links(date_list)

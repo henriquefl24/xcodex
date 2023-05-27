@@ -4,10 +4,10 @@ def download(links: list):
     """
     from os.path import join, exists, expanduser
     from os import getcwd, makedirs
-    from create_dodsrc import create_dodsrc
-    from create_netrc import create_netrc
     from concurrent.futures import ThreadPoolExecutor
-    from download_file_progress import download_file_with_progress
+    from Util.create_dodsrc import create_dodsrc
+    from Util.create_netrc import create_netrc
+    from Util.download_file_progress import download_file_with_progress
 
     # Check if the specified directory exists and create it if it doesn't
     path = join(getcwd(), "downloaded_data")
