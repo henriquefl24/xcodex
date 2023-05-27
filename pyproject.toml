@@ -22,7 +22,7 @@ description = """This package will extract daily data from netCDF4 files downloa
               doi: 10.5067/Y9M4NM9MPCGH"""
 
 readme = "README.md"
-requires-python = ">=3.11"
+requires-python = ">=3.9"
 classifiers = [
     "Development Status :: 4 - Beta",
     	"Intended Audience :: Developers",
