@@ -2,13 +2,11 @@ from pandas import DataFrame
 from netCDF4 import Dataset
 from datetime import datetime
 from numpy import where, isclose, array, NaN
-
 from Util.date import calendar_days
 from Util.missing import new_subset
 from Util.var_imp import variables
 from Util.make_Dataframe import make_dataframe
 from Util.check import check_date
-
 
 def xco2_extract(path: list[str],
                  start: str,
