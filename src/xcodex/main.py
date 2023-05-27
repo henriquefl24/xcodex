@@ -8,6 +8,7 @@ from Util.missing import new_subset
 from Util.var_imp import variables
 from Util.make_Dataframe import make_dataframe
 from Util.check import check_date
+from Util.generate_links import generate_links
 
 
 def xco2_extract(path: list[str],
@@ -42,6 +43,8 @@ def xco2_extract(path: list[str],
         year_test, month, month_test, day, day_test, jd, fmt = variables()
 
     calendar_list = calendar_days(start, end)
+
+    links = generate_links(calendar_list)
 
     # Remove ordinal suffixes from start and end date strings
     start = re.sub(r'(st|nd|rd|th)', '', start)
@@ -160,11 +163,15 @@ def xco2_extract(path: list[str],
     dataframe = make_dataframe(city, jd, day, month, year, lat, lon, lat_index,
                                lon_index, XCO2_values, XCO2PREC_values)
 
-    if days_between > len(path):
+    if days_between < len(links):
         print('\033[91m' + "\nWARNING! Incomplete dataframe.\n"
                            "There might be missing files or the date isn't avaliable yet\n" + '\033[0m')
-        print(f'End of data extracting: {end}\n'
-              f'Amount of available files: {len(path)}\n')
+        print(
+            f'Start date: {start}\n'
+            f'End date: {end}\n'
+            f'Days between: {days_between}\n'
+            f'Links provided: {len(links)}\n'
+            f'Missing days: {len(links) - days_between}')
 
     if missing_data:
         new_subset(dataframe)
