@@ -3,3 +3,4 @@ numpy==1.24.3
 netCDF4==1.6.3
 jupyter==1.0.0
 requests~=2.31.0
+setuptools==67.8.0
