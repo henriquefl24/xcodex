@@ -10,7 +10,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "xcodex"
-version = "0.0.3"
+version = "0.0.2"
 authors = [
   {name="Henrique Fontellas Laurito", email="henrique.f.laurito@unesp.br" }
 ]
