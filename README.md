@@ -1,4 +1,4 @@
-<img height="200" src="logo_gas.jpg" width="550" alt="logo"/> <br>
+![logo](D:\Git\xcodex\logo_gas.jpg) <br>
 
 # **Welcome to XCODEX - XCO2 Daily EXtractor**
 
