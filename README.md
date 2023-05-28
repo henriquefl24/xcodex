@@ -1,4 +1,5 @@
-<img alt="logo" src="D:\Git\xcodex\logo_gas.jpg" title="Group of Agrometeorological Studies - FCAV/Unesp"/> <br>
+![CABEÇALHO](https://i.imgur.com/Pq8uUM3.jpg)
+
 
 # **Welcome to XCODEX - XCO2 Daily EXtractor**
 
