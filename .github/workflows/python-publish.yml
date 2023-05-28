@@ -25,7 +25,7 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v3
       with:
-        python-version: '3.x'
+        python-version: '3.9'
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
@@ -36,4 +36,4 @@ jobs:
       uses: pypa/gh-action-pypi-publish@27b31702a0e7fc50959f5ad993c78deac1bdfc29
       with:
         user: __token__
-        password: ${{ secrets.PYPI_API_TOKEN }}
+        password: ${{ pypi-AgEIcHlwaS5vcmcCJGU0ZjUxNzE1LWRmMWItNDRjYi05MmU4LTRiODgzM2FkMjk2ZQACDlsxLFsieGNvZGV4Il1dAAIsWzIsWyI3YzYwYzk3MC0yOGNiLTRhODQtOWQwMC05YjYxZjBlODEzNDIiXV0AAAYg9-aAXavwQUtLOeonnw-ZhMUQ2jydJ3NMuPshQsgLSJw }}
