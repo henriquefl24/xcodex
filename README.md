@@ -1,5 +1,9 @@
 ![CABEÇALHO](https://i.imgur.com/Pq8uUM3.jpg)
 
+### *Please, cite this package as:*
+
+Laurito, H., La Scala, N., Rolim, G. S., 2023. Extracting XCO2-NASA Daily data with XCODEX:
+A Python package designed for data extraction and structuration. Jaboticabal, SP, BR, (...)
 
 # **Welcome to XCODEX - XCO2 Daily EXtractor**
 
@@ -58,11 +62,10 @@ df = xco2_extract(path=arquive_folder,
                   start=start_date,
                   end=end_date,
                   missing_data=False,
-                  **locations) # Extracting XCO2
-
-df          
+                  **locations); df # Extracting XCO2
+      
 ```
-Note1: The location used in this example was Mauna Loa. Any location can be used<br>
+Note1: The location used in this example was Mauna Loa, New York and Paris. Any location can be used<br>
 as long the format "Location[lat, lon]" is respected. The values of <br>
 latitude and longitude must be in decimal degrees.
 
@@ -161,11 +164,6 @@ plt.show()
 https://github.com/GlaucoRolim (Co-author) <br>
 https://github.com/kyuenjpl/ARSET_XCO2 <br>
 https://github.com/sagarlimbu0/OCO2-OCO3
-
-### *Please, cite this package as:*
-
-Laurito, H., La Scala, N., Rolim, G. S., 2023. Extracting XCO2-NASA Daily data with XCODEX:
-A Python package designed for data extraction and structuration. Jaboticabal, SP, BR, (...)
 
 ### **Data source citation**:
 

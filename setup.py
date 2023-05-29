@@ -1,7 +1,8 @@
 from setuptools import setup
 
 VERSION = "0.0.4"
-DESCRIPTION = """This package will extract daily data from netCDF4 files downloaded at GES DISC database"
+DESCRIPTION = """This package will download and extract daily data of XCO2 from the NASA Goddard Earth Sciences (GES) 
+                 Data and Information Services Center (DISC)"
               Source citation: Brad Weir, Lesley Ott and OCO-2 Science Team (2022), OCO-2 GEOS Level 3 daily,
               0.5x0.625 assimilated CO2 V10r, Greenbelt, MD, USA, Goddard Earth Sciences Data
               and Information Services Center (GES DISC), Accessed: 10/31/2022,
