@@ -26,7 +26,7 @@ def make_dataframe(city, jd, day, month, year, lat, lon, lat_index, lon_index, X
 
     # Assigning List Values to the Dataframe
 
-    dataframe['city'] = city
+    dataframe['location'] = city
     dataframe['jd'] = jd
     dataframe['day'] = day
     dataframe['month'] = month
@@ -35,8 +35,8 @@ def make_dataframe(city, jd, day, month, year, lat, lon, lat_index, lon_index, X
     dataframe['lon'] = lon
     dataframe['lat_index'] = lat_index
     dataframe['lon_index'] = lon_index
-    dataframe['xco2'] = XCO2_values
-    dataframe['xco2_prec'] = XCO2PREC_values
+    dataframe['XCO2'] = XCO2_values
+    dataframe['XCO2_prec'] = XCO2PREC_values
 
     # Organizing the dataframe
 
