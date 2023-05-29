@@ -168,14 +168,14 @@ def xco2_extract(path: list[str],
 
     # Padronizing values to float
 
-    dataframe.set_index('city', inplace=True, drop=True)
+    dataframe.set_index('location', inplace=True, drop=True)
     dataframe = dataframe.astype(float)
     dataframe.reset_index(inplace=True, drop=False)
 
     return dataframe
 
 
-def download_file(start: str, end: int) -> None:
+def download_file(start: str, end: str) -> None:
     """
     This method will effectively download .nc4 files from NASA
     Args:

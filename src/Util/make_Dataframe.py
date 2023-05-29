@@ -40,7 +40,7 @@ def make_dataframe(city, jd, day, month, year, lat, lon, lat_index, lon_index, X
 
     # Organizing the dataframe
 
-    dataframe.sort_values(by=['city', 'year'], inplace=True)
+    dataframe.sort_values(by=['location', 'year'], inplace=True)
     dataframe.reset_index(inplace=True, drop=True)
 
     return dataframe
