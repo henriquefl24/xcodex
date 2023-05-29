@@ -11,7 +11,7 @@ I will attach the links containing the GitHub profile of the researchers who hel
 
 I hope it's useful to you. **Long live science!**
 
-## *Instaling the package*
+## *Installing the package*
 
 To install the package, use the command:
 ```angular2html
@@ -23,10 +23,10 @@ There's the possibility to download the .nc4 files directly here:
 ```angular2html
 # Setting historical serie
 
-from Util.download_data import download_file
+from xcodex.main import download_file
 
-start_date = "1st of February, 2022"
-end_date = "28th of February, 2022"
+start_date = "1st of January, 2022"
+end_date = "31st of January, 2022"
 
 # Downloading .nc4 files
 download_file(start_date, end_date) 
@@ -46,7 +46,7 @@ from os import getcwd
 
 arquive_folder = glob(join(getcwd(), "downloaded_data", "*.nc4")) 
 
-# Setting desired locations
+# Setting desired locations to build a time series XCO2 data
 
 locations = dict(Mauna_loa=[19.479488, -155.602829],
                  New_York=[40.712776, -74.005974],
