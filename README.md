@@ -164,7 +164,7 @@ https://github.com/sagarlimbu0/OCO2-OCO3
 
 ### *Please, cite this package as:*
 
-Laurito, H., La Scala, N.,Rolim, G., 2023. Extracting XCO2-NASA Daily data with XCODEX:
+Laurito, H., La Scala, N., Rolim, G. S., 2023. Extracting XCO2-NASA Daily data with XCODEX:
 A Python package designed for data extraction and structuration. Jaboticabal, SP, BR, (...)
 
 ### **Data source citation**:
