@@ -1,3 +1,6 @@
+from pandas.errors import ParserError
+
+
 def calendar_days(start: str, end: str):
     """
     This method will create a union of calendar dates for further comparison.
@@ -7,11 +10,11 @@ def calendar_days(start: str, end: str):
     :return: Union of calendar days. 01/01/2015 to 01/01/2016
     """
     from pandas import to_datetime, date_range
-
-    start_date = to_datetime(start)  # Defines the start date of data collection
-    end_date = to_datetime(end)  # Defines the end date of data collection
-
-    calendar_list = date_range(start_date, end_date)
-
-    return calendar_list
-
+    try:
+        start_date = to_datetime(start)  # Defines the start date of data collection
+        end_date = to_datetime(end)  # Defines the end date of data collection
+        calendar_list = date_range(start_date, end_date)
+        return calendar_list
+    except (ValueError, ParserError):
+        print('\033[31m' + 'WARNING! Please, insert a valid date' + '\033[0m')
+        return None
