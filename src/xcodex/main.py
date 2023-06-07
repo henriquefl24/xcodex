@@ -171,6 +171,7 @@ def xco2_extract(path: list[str],
     dataframe.set_index('location', inplace=True, drop=True)
     dataframe = dataframe.astype(float)
     dataframe.reset_index(inplace=True, drop=False)
+    dataframe.to_csv("output_xco2_data.csv", sep=";")
 
     return dataframe
 
