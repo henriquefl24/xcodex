@@ -2,7 +2,7 @@
 
 # **Welcome to XCODEX - XCO2 Daily EXtractor**
 
-Hi there! My name is Henrique.
+Hi there! My name is Henrique!
 
 The creation of this Python package was intended to create a simple solution for extracting daily data from XCO2 retrieved from the GES DISC platform.
 
