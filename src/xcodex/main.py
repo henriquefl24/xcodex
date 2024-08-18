@@ -3,12 +3,12 @@ from netCDF4 import Dataset
 from numpy import where, isclose, array, nan
 from datetime import datetime
 import re
-from src.Util.date import calendar_days
-from src.Util.missing import new_subset
-from src.Util.var_imp import variables
-from src.Util.make_Dataframe import make_dataframe
-from src.Util.check import check_date
-from src.Util.generate_links import generate_links
+from src.xcodex.Util.date import calendar_days
+from src.xcodex.Util.missing import new_subset
+from src.xcodex.Util.var_imp import variables
+from src.xcodex.Util.make_Dataframe import make_dataframe
+from src.xcodex.Util.check import check_date
+from src.xcodex.Util.generate_links import generate_links
 
 
 def xco2_extract(path: list[str],
@@ -185,9 +185,9 @@ def download_file(start: str, end: str) -> None:
 
     Returns: None
     """
-    from src.Util.date import calendar_days
-    from src.Util.generate_links import generate_links
-    from src.Util.download import download
+    from src.xcodex.Util.date import calendar_days
+    from src.xcodex.Util.generate_links import generate_links
+    from src.xcodex.Util.download import download
 
     date_list = calendar_days(start, end)
     links = generate_links(date_list)
