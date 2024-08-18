@@ -6,7 +6,8 @@ requires = [
 	"requests~=2.31.0",
 	"setuptools==67.8.0",
 	"tqdm>=4.62.3",
-	"jupyter==1.0.0"]
+	"jupyter==1.0.0",
+	"distutils==3.7.0"]
 build-backend = "setuptools.build_meta"
 
 [project]

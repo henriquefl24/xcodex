@@ -27,5 +27,5 @@ setup(name='xcodex',
           "Operating System :: Microsoft :: Windows"],
       package_dir={"": "."},
       python_requires=">=3.8",
-      install_requires=['pandas', 'numpy', 'netCDF4', 'jupyter', 'requests', 'setuptools', 'tqdm']
+      install_requires=['pandas', 'numpy', 'netCDF4', 'jupyter', 'requests', 'setuptools', 'tqdm', 'distutils ']
       )
