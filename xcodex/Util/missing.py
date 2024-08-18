@@ -22,7 +22,7 @@ def new_subset(dataframe: DataFrame) -> None:
 
     unique_links = list(set(links_list))
 
-    with open('../new_subset.txt', 'w') as f:
+    with open('new_subset.txt', 'w') as f:
         f.write('\n'.join(unique_links))
 
     print(f"Number of missing days: {len(dataframe)}"
