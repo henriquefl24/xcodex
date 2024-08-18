@@ -10,23 +10,23 @@ DESCRIPTION = """This package will download and extract daily data of XCO2 from 
 
 # Setting up
 
-setup(name='xcodex',
-      version=VERSION,
-      author='henriquefl24@git',
-      author_email="<henrique.f.laurito@unesp.br>",
-      description=DESCRIPTION,
-      packages=["xcodex", "Util"],
-      keywords=['python', 'NASA', 'GES DISC', 'XCO2', 'daily', 'OCO-2', 'jupyter notebook', 'xcodex'],
+setup(name='xcodex' ,
+      version=VERSION ,
+      author='henriquefl24@git' ,
+      author_email="<henrique.f.laurito@unesp.br>" ,
+      description=DESCRIPTION ,
+      packages=["xcodex" , "Util"] ,
+      keywords=['python' , 'NASA' , 'GES DISC' , 'XCO2' , 'daily' , 'OCO-2' , 'jupyter notebook' , 'xcodex'] ,
       classifiers=[
-          "Development Status :: 4 - Beta",
-          "Intended Audience :: Developers",
-          "License :: OSI Approved :: MIT License",
-          "Programming Language :: Python :: 3.8",
-          "Operating System :: Unix",
-          "Operating System :: MacOS :: MacOS X",
-          "Operating System :: Microsoft :: Windows"],
-      package_dir={"xcodex": "src/xcodex",
-                   "Util": "src/Util"},
-      python_requires=">=3.8",
-      install_requires=['pandas', 'numpy', 'netCDF4', 'jupyter', 'requests', 'setuptools']
+          "Development Status :: 4 - Beta" ,
+          "Intended Audience :: Developers" ,
+          "License :: OSI Approved :: MIT License" ,
+          "Programming Language :: Python :: 3.8" ,
+          "Operating System :: Unix" ,
+          "Operating System :: MacOS :: MacOS X" ,
+          "Operating System :: Microsoft :: Windows"] ,
+      package_dir={"xcodex": "src/xcodex" ,
+                   "Util": "src/Util"} ,
+      python_requires=">=3.8" ,
+      install_requires=['pandas' , 'numpy' , 'netCDF4' , 'jupyter' , 'requests' , 'setuptools' , 'tqdm']
       )
