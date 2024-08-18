@@ -1,6 +1,6 @@
 [![logo-gas-removebg-preview.png](https://i.postimg.cc/gjptBxF4/logo-gas-removebg-preview.png)](https://postimg.cc/vgPv4Hm6)
 
-### *Please, cite this package as:*
+### *Please, cite this package as: *
 
 Laurito, H., La Scala, N., Rolim, G. S., 2023. Extracting XCO2-NASA Daily data with XCODEX:
 A Python package designed for data extraction and structuration. Jaboticabal, SP, BR, (...)
