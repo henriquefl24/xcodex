@@ -1,10 +1,5 @@
 [![logo-gas-removebg-preview.png](https://i.postimg.cc/gjptBxF4/logo-gas-removebg-preview.png)](https://postimg.cc/vgPv4Hm6)
 
-### *Please, cite this package as: *
-
-Laurito, H., La Scala, N., Rolim, G. S., 2023. Extracting XCO2-NASA Daily data with XCODEX:
-A Python package designed for data extraction and structuration. Jaboticabal, SP, BR, (...)
-
 # **Welcome to XCODEX - XCO2 Daily EXtractor**
 
 Hi there! My name is Henrique.
@@ -164,6 +159,12 @@ plt.show()
 https://github.com/GlaucoRolim (Co-author) <br>
 https://github.com/kyuenjpl/ARSET_XCO2 <br>
 https://github.com/sagarlimbu0/OCO2-OCO3
+
+### *Please, cite this package as:*
+
+Laurito, H., La Scala, N., Rolim, G. S., 2023. Extracting XCO2-NASA Daily data with XCODEX:
+A Python package designed for data extraction and structuration. Jaboticabal, SP, BR, (...)
+
 
 ### **Data source citation**:
 
