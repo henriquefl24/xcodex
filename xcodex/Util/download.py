@@ -6,9 +6,9 @@ def download(links: list):
     from os import getcwd, makedirs
     from getpass import getpass
     from concurrent.futures import ThreadPoolExecutor
-    from src.xcodex.Util.create_dodsrc import create_dodsrc
-    from src.xcodex.Util.create_netrc import create_netrc
-    from src.xcodex.Util.download_file_progress import download_file_with_progress
+    from xcodex.Util.create_dodsrc import create_dodsrc
+    from xcodex.Util.create_netrc import create_netrc
+    from xcodex.Util.download_file_progress import download_file_with_progress
 
     home_dir = expanduser("~")
     netrc_path = join(home_dir, ".netrc")

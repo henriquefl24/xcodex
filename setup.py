@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 VERSION = "0.0.7"
-DESCRIPTION = """This package will download and extract daily data of XCO2 from the NASA Goddard Earth Sciences (GES) 
+DESCRIPTION = """This package will download and extract daily data of XCO2 from the NASA Goddard Earth Sciences (GES)
                  Data and Information Services Center (DISC)"
               Source citation: Brad Weir, Lesley Ott and OCO-2 Science Team (2022), OCO-2 GEOS Level 3 daily,
               0.5x0.625 assimilated CO2 V10r, Greenbelt, MD, USA, Goddard Earth Sciences Data
@@ -15,7 +15,7 @@ setup(name='xcodex',
       author='henriquefl24@git',
       author_email="<henrique.f.laurito@unesp.br>",
       description=DESCRIPTION,
-      packages=find_packages(where='src'),
+      packages=find_packages(where='.'),
       keywords=['python', 'NASA', 'GES DISC', 'XCO2', 'daily', 'OCO-2', 'jupyter notebook', 'xcodex'],
       classifiers=[
           "Development Status :: 4 - Beta",
@@ -25,7 +25,7 @@ setup(name='xcodex',
           "Operating System :: Unix",
           "Operating System :: MacOS :: MacOS X",
           "Operating System :: Microsoft :: Windows"],
-      package_dir={"": "src"},
+      package_dir={"": "."},
       python_requires=">=3.8",
       install_requires=['pandas', 'numpy', 'netCDF4', 'jupyter', 'requests', 'setuptools', 'tqdm']
       )
