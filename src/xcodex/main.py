@@ -1,6 +1,6 @@
 from pandas import DataFrame
 from netCDF4 import Dataset
-from numpy import where, isclose, array, NaN
+from numpy import where, isclose, array, nan
 from datetime import datetime
 import re
 from Util.date import calendar_days
@@ -95,10 +95,10 @@ def xco2_extract(path: list[str],
 
                 if int(day[d]) != day_test[d] or int(year[d]) != year_test[d]:
 
-                    lat_index.append(NaN)
-                    lon_index.append(NaN)
-                    XCO2_values.append(NaN)
-                    XCO2PREC_values.append(NaN)
+                    lat_index.append(nan)
+                    lon_index.append(nan)
+                    XCO2_values.append(nan)
+                    XCO2PREC_values.append(nan)
 
                     day.pop()
                     day.append(str(day_test[d]))
@@ -148,7 +148,7 @@ def xco2_extract(path: list[str],
                     try:
                         XCO2PREC_values.append(xco2_netCDF4['XCO2PREC'][0][lat_index[i]][lon_index[i]])
                     except IndexError:
-                        XCO2PREC_values.append(NaN)
+                        XCO2PREC_values.append(nan)
 
                     i += 1
                     d += 1

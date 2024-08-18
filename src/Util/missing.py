@@ -8,7 +8,7 @@ def new_subset(dataframe: DataFrame) -> None:
     :dataframe: Pandas.DataFrame. Takes the xco2_extract dataframe to identificate the NaN values.
     :return: None
     """
-    dataframe = dataframe.loc[dataframe.xco2.isna()]
+    dataframe = dataframe.loc[dataframe['XCO2'].isna()]
     dataframe.reset_index(inplace=True, drop=True)
 
     links_list = []
