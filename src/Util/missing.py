@@ -9,13 +9,13 @@ def new_subset(dataframe: DataFrame) -> None:
     :return: None
     """
     dataframe = dataframe.loc[dataframe['XCO2'].isna()]
-    dataframe.reset_index(inplace=True, drop=True)
+    dataframe.reset_index(inplace=True , drop=True)
 
     links_list = []
     for _, row in dataframe.iterrows():
-        year = str(row[4])
-        month = str(row[3]).zfill(2)
-        day = str(row[2]).zfill(2)
+        year = str(row.iloc[4])
+        month = str(row.iloc[3]).zfill(2)
+        day = str(row.iloc[2]).zfill(2)
 
         link = f"https://oco2.gesdisc.eosdis.nasa.gov/data/OCO2_DATA/OCO2_GEOS_L3CO2_DAY.10r/{year}/oco2_GEOS_L3CO2_day_{year}{month}{day}_B10206Ar.nc4"
         links_list.append(link)
