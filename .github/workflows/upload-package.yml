@@ -12,10 +12,8 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v3
       with:
-        python-version: '3.11'
+        python-version: '3.11.9'
     - name: Set PKG_CONFIG_PATH
-      run: echo "PKG_CONFIG_PATH=/usr/lib/x86_64-linux-gnu/pkgconfig" >> $GITHUB_ENV
-    - name: Install HDF5
       run: sudo apt-get install libhdf5-serial-dev
     - name: Install dependencies
       run: |
