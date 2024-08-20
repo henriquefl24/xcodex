@@ -1,3 +1,5 @@
+import os
+
 from pandas import DataFrame
 
 
@@ -22,7 +24,12 @@ def new_subset(dataframe: DataFrame) -> None:
 
     unique_links = list(set(links_list))
 
-    with open('new_subset.txt', 'w') as f:
+    # Create directory called 'outputs' to save the new_subset.txt
+    output_dir = os.path.join(os.getcwd(), "outputs")
+    os.makedirs(output_dir, exist_ok=True)
+    path_to_file = os.path.join(output_dir, 'new_subset.txt')
+
+    with open(path_to_file, 'w') as f:
         f.write('\n'.join(unique_links))
 
     print(f"Number of missing days: {len(dataframe)}"

@@ -1,8 +1,7 @@
 from pandas import DataFrame
 
 
-def make_dataframe(city, jd, day, month, year, lat, lon, lat_index, lon_index, XCO2_values,
-                   XCO2PREC_values) -> DataFrame:
+def make_dataframe(location, jd, day, month, year, lat, lon, lat_grid, lon_grid, XCO2, XCO2PREC) -> DataFrame:
     """
     This method will create the output dataframe
     Args:
@@ -26,17 +25,17 @@ def make_dataframe(city, jd, day, month, year, lat, lon, lat_index, lon_index, X
 
     # Assigning List Values to the Dataframe
 
-    dataframe['location'] = city
+    dataframe['location'] = location
     dataframe['jd'] = jd
     dataframe['day'] = day
     dataframe['month'] = month
     dataframe['year'] = year
     dataframe['lat'] = lat
     dataframe['lon'] = lon
-    dataframe['lat_index'] = lat_index
-    dataframe['lon_index'] = lon_index
-    dataframe['XCO2'] = XCO2_values
-    dataframe['XCO2_prec'] = XCO2PREC_values
+    dataframe['lat_grid'] = lat_grid
+    dataframe['lon_grid'] = lon_grid
+    dataframe['XCO2'] = XCO2
+    dataframe['XCO2PREC'] = XCO2PREC
 
     # Organizing the dataframe
 
