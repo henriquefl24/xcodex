@@ -1,6 +1,6 @@
 from pandas import DataFrame
 from netCDF4 import Dataset
-from numpy import where , isclose , array , nan
+from numpy import where, isclose, array, nan
 from datetime import datetime
 import re
 from xcodex.Util.date import calendar_days
@@ -11,10 +11,10 @@ from xcodex.Util.check import check_date
 from xcodex.Util.generate_links import generate_links
 
 
-def xco2_extract(path: list[str] ,
-                 start: str ,
-                 end: str ,
-                 missing_data=False ,
+def xco2_extract(path: list[str],
+                 start: str,
+                 end: str,
+                 missing_data=False,
                  **kwargs: dict) -> DataFrame:
     r"""This method will extract daily XCO2 data from the netCDF4 files.
 
@@ -39,20 +39,20 @@ def xco2_extract(path: list[str] ,
         - Group of Agrometeorological Studies (GAS) [FCAV/Unesp]
     """
 
-    city , lat , lat_index , lon , lon_index , XCO2_values , XCO2PREC_values , year , \
-        year_test , month , month_test , day , day_test , jd , fmt = variables()
+    city, lat, lat_index, lon, lon_index, XCO2_values, XCO2PREC_values, year, \
+        year_test, month, month_test, day, day_test, jd, fmt = variables()
 
-    calendar_list = calendar_days(start , end)
+    calendar_list = calendar_days(start, end)
 
     links = generate_links(calendar_list)
 
     # Remove ordinal suffixes from start and end date strings
-    start = re.sub(r'(st|nd|rd|th)' , '' , start)
-    end = re.sub(r'(st|nd|rd|th)' , '' , end)
+    start = re.sub(r'(st|nd|rd|th)', '', start)
+    end = re.sub(r'(st|nd|rd|th)', '', end)
 
     # Convert start and end dates to datetime objects
-    start_date = datetime.strptime(start , '%d of %B, %Y')
-    end_date = datetime.strptime(end , '%d of %B, %Y')
+    start_date = datetime.strptime(start, '%d of %B, %Y')
+    end_date = datetime.strptime(end, '%d of %B, %Y')
 
     # Calculate the number of days between the start and end dates
     days_between = (end_date - start_date).days
@@ -65,12 +65,12 @@ def xco2_extract(path: list[str] ,
 
         xco2_netCDF4 = Dataset(path[c])
 
-        if check_date(calendar_list , xco2_netCDF4):
+        if check_date(calendar_list, xco2_netCDF4):
             c += 1
             pass
         else:
 
-            for k , v in kwargs.items():
+            for k, v in kwargs.items():
 
                 # Saving municipalities and coordinates in deque
 
@@ -80,10 +80,10 @@ def xco2_extract(path: list[str] ,
 
                 # Assign calendar year, month, day and julians days for comparison
 
-                year_test.append(datetime.strptime(str(calendar_list[e]) , fmt).timetuple().tm_year)
-                month_test.append(datetime.strptime(str(calendar_list[e]) , fmt).timetuple().tm_mon)
-                day_test.append(datetime.strptime(str(calendar_list[e]) , fmt).timetuple().tm_mday)
-                jd.append(datetime.strptime(str(calendar_list[e]) , fmt).timetuple().tm_yday)
+                year_test.append(datetime.strptime(str(calendar_list[e]), fmt).timetuple().tm_year)
+                month_test.append(datetime.strptime(str(calendar_list[e]), fmt).timetuple().tm_mon)
+                day_test.append(datetime.strptime(str(calendar_list[e]), fmt).timetuple().tm_mday)
+                jd.append(datetime.strptime(str(calendar_list[e]), fmt).timetuple().tm_yday)
 
                 # netCDF4 defined date
 
@@ -122,16 +122,16 @@ def xco2_extract(path: list[str] ,
                     lat_index.append(
                         where(
                             isclose(
-                                a=array(xco2_netCDF4['lat'][:]) ,
-                                b=array(lat[i]) ,
+                                a=array(xco2_netCDF4['lat'][:]),
+                                b=array(lat[i]),
                                 atol=0.5 / 2)
                         )[0][0])
 
                     lon_index.append(
                         where(
                             isclose(
-                                a=array(xco2_netCDF4['lon'][:]) ,
-                                b=array(lon[i]) ,
+                                a=array(xco2_netCDF4['lon'][:]),
+                                b=array(lon[i]),
                                 atol=0.625 / 2)
                         )[0][0])
 
@@ -160,23 +160,23 @@ def xco2_extract(path: list[str] ,
             if e > days_between:
                 break
 
-    dataframe = make_dataframe(city , jd , day , month , year , lat , lon , lat_index ,
-                               lon_index , XCO2_values , XCO2PREC_values)
+    dataframe = make_dataframe(city, jd, day, month, year, lat, lon, lat_index,
+                               lon_index, XCO2_values, XCO2PREC_values)
 
     if missing_data:
         new_subset(dataframe)
 
-    # Padronizing values to float
+    # Patronizing values to float
 
-    dataframe.set_index('location' , inplace=True , drop=True)
+    dataframe.set_index('location', inplace=True, drop=True)
     dataframe = dataframe.astype(float)
-    dataframe.reset_index(inplace=True , drop=False)
-    dataframe.to_csv("output_xco2_data.csv" , sep=";")
+    dataframe.reset_index(inplace=True, drop=False)
+    dataframe.to_csv("output_xco2_data.csv", sep=";")
 
     return dataframe
 
 
-def download_file(start: str , end: str) -> None:
+def download_file(start: str, end: str) -> None:
     """
     This method will effectively download .nc4 files from NASA
     Args:
@@ -189,29 +189,6 @@ def download_file(start: str , end: str) -> None:
     from xcodex.Util.generate_links import generate_links
     from xcodex.Util.download import download
 
-    date_list = calendar_days(start , end)
+    date_list = calendar_days(start, end)
     links = generate_links(date_list)
     download(links)
-
-
-from netCDF4 import Dataset
-
-
-def check_date(calendar_list , xco2_netCDF4: Dataset) -> bool:
-    """
-    This routine will check if the calendar year matches with the current file
-    """
-
-    if str(calendar_list.year[0]) > str(xco2_netCDF4['time'].begin_date)[0:4]:
-        flag = True
-
-    else:
-        if str(calendar_list.month[0]) > str(xco2_netCDF4['time'].begin_date)[4:6].lstrip("0"):
-            flag = True
-        else:
-            if str(calendar_list.day[0]) > str(xco2_netCDF4['time'].begin_date)[6:].lstrip("0"):
-                flag = True
-            else:
-                flag = False
-
-    return flag
