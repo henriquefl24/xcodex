@@ -24,7 +24,7 @@ description = """This package will download and extract daily data of XCO2 from 
               doi: 10.5067/Y9M4NM9MPCGH"""
 
 readme = "README.md"
-requires-python = ">=3.11.9"
+requires-python = ">=3"
 classifiers = [
     "Development Status :: 5 - Production/Stable",
     	"Intended Audience :: Developers",

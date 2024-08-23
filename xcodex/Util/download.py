@@ -63,6 +63,12 @@ def download_file_with_progress(url: str, pbar):
     filename = url.split("/")[-1]
     file_path = join("downloaded_data", filename)
 
+    # Check if the file already exists
+    if exists(file_path):
+        file_size = 3.20 * 1024 * 1024  # Approximate size of the file in bytes
+        pbar.update(file_size)
+        return
+
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) '
                       'Chrome/58.0.3029.110 Safari/537.3'

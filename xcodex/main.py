@@ -1,11 +1,9 @@
 from glob import glob
 from ntpath import join
 from os import getcwd, makedirs
-
 import pandas as pd
 import xarray as xr
 from numpy import nan
-
 from xcodex.Util.date import calendar_days
 from xcodex.Util.download import download
 from xcodex.Util.generate_links import generate_links
@@ -14,12 +12,13 @@ from xcodex.Util.missing import new_subset
 from xcodex.Util.var_imp import variables
 
 
-def xco2_extract(start: str, end: str, missing_data=False, **kwargs: dict) -> pd.DataFrame:
+def xco2_extract(start: str, end: str, missing_data=False, downloaded_data_path=None, **kwargs: dict) -> pd.DataFrame:
     """
     Extracts XCO2 data from the OCO-2 satellite for the specified date range and locations.
     :param start: The start date in the format 'YYYY-MM-DD'
     :param end: The end date in the format 'YYYY-MM-DD'
     :param missing_data: A boolean value to indicate if missing data should be filled
+    :param downloaded_data_path: Path to the directory containing downloaded .nc4 files
     :param kwargs: A dictionary with locations and their corresponding latitude and longitude values
     :return: A pandas DataFrame containing the extracted XCO2 data
     """
@@ -29,7 +28,10 @@ def xco2_extract(start: str, end: str, missing_data=False, **kwargs: dict) -> pd
     links = generate_links(date_list)
     download(links)
 
-    path = glob(join(getcwd(), "downloaded_data", "*.nc4"))
+    if downloaded_data_path is None:
+        downloaded_data_path = join(getcwd(), "downloaded_data")
+
+    path = glob(join(downloaded_data_path, "*.nc4"))
 
     for file_path in path:
         xco2_netCDF4 = xr.open_dataset(file_path)
@@ -60,9 +62,12 @@ def xco2_extract(start: str, end: str, missing_data=False, **kwargs: dict) -> pd
             except IndexError:
                 XCO2.append(nan)
 
-            try:
-                XCO2PREC.append(xco2_netCDF4['XCO2PREC'].sel(lat=v[0], lon=v[1], method='nearest').values)
-            except IndexError:
+            if 'XCO2PREC' in xco2_netCDF4.variables:
+                try:
+                    XCO2PREC.append(xco2_netCDF4['XCO2PREC'].sel(lat=v[0], lon=v[1], method='nearest').values)
+                except IndexError:
+                    XCO2PREC.append(nan)
+            else:
                 XCO2PREC.append(nan)
 
     dataframe = make_dataframe(location, jd, day, month, year, lat, lon, lat_grid, lon_grid, XCO2, XCO2PREC)
