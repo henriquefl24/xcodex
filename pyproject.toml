@@ -11,7 +11,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "xcodex"
-version = "1.1.1"
+version = "1.2.1"
 authors = [
   {name="Henrique Fontellas Laurito", email="henrique.f.laurito@unesp.br" }
 ]
@@ -24,13 +24,11 @@ description = """This package will download and extract daily data of XCO2 from 
               doi: 10.5067/Y9M4NM9MPCGH"""
 
 readme = "README.md"
-requires-python = ">=3"
+requires-python = ">=3.9"
 classifiers = [
     "Development Status :: 5 - Production/Stable",
     	"Intended Audience :: Developers",
     	"License :: OSI Approved :: MIT License",
- 		"Programming Language :: Python :: 3",
- 		"Programming Language :: Python :: 3.8",
  		"Programming Language :: Python :: 3.9",
 		"Programming Language :: Python :: 3.10",
 		"Programming Language :: Python :: 3.11",

@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-VERSION = "1.1.1"
+VERSION = "1.2.1"
 DESCRIPTION = """This package will download and extract daily data of XCO2 from the NASA Goddard Earth Sciences (GES)
                  Data and Information Services Center (DISC)"
               Source citation: Brad Weir, Lesley Ott and OCO-2 Science Team (2022), OCO-2 GEOS Level 3 daily,
@@ -21,8 +21,6 @@ setup(name='xcodex',
           "Development Status :: 5 - Production/Stable",
           "Intended Audience :: Developers",
           "License :: OSI Approved :: MIT License",
-          "Programming Language :: Python :: 3",
-          "Programming Language :: Python :: 3.8",
           "Programming Language :: Python :: 3.9",
           "Programming Language :: Python :: 3.10",
           "Programming Language :: Python :: 3.11",
@@ -30,6 +28,6 @@ setup(name='xcodex',
           "Operating System :: MacOS :: MacOS X",
           "Operating System :: Microsoft :: Windows"],
       package_dir={"": "."},
-      python_requires=">=3.8",
+      python_requires=">=3.9",
       install_requires=['pandas', 'numpy', "xarray", 'jupyter', 'requests', 'setuptools', 'tqdm']
       )
