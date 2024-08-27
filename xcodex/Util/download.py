@@ -12,7 +12,7 @@ from xcodex.Util.create_dodsrc import create_dodsrc
 from xcodex.Util.create_netrc import create_netrc
 
 
-def download(links: list):
+def download(links: list, downloaded_data_path: str = None):
     """
     This method downloads .nc4 files from the provided links and saves them to the specified path.
     """
@@ -31,8 +31,9 @@ def download(links: list):
             create_dodsrc()
 
     # Check if the specified directory exists and create it if it doesn't
-    path = join(getcwd(), "downloaded_data")
-    makedirs(path, exist_ok=True)
+    if downloaded_data_path is None:
+        downloaded_data_path = join(getcwd(), "downloaded_data")
+    makedirs(downloaded_data_path, exist_ok=True)
 
     # Filter .nc4 links
     nc4_links = [link for link in links if link.endswith('.nc4')]
@@ -41,27 +42,30 @@ def download(links: list):
     total_size = len(nc4_links) * 3.20 * 1024 * 1024  # 3.20 MB per file
 
     # Check if all files are already downloaded
-    all_downloaded = all(exists(join(path, link.split("/")[-1])) for link in nc4_links)
+    all_downloaded = all(exists(join(downloaded_data_path, link.split("/")[-1])) for link in nc4_links)
 
     with tqdm(total=total_size, unit='B', unit_scale=True, desc="Total Progress") as pbar:
         if all_downloaded:
             pbar.update(total_size)  # Complete the progress bar if all files are already downloaded
         else:
             with ThreadPoolExecutor() as executor:
-                futures = [executor.submit(download_file_with_progress, link, pbar) for link in nc4_links]
+                futures = [executor.submit(download_file_with_progress, link, pbar, downloaded_data_path) for link in
+                           nc4_links]
                 for future in futures:
                     future.result()
 
 
-def download_file_with_progress(url: str, pbar):
+# Atualizar a função download_file_with_progress para aceitar o parâmetro downloaded_data_path
+def download_file_with_progress(url: str, pbar, downloaded_data_path: str):
     """
     Download a file from the internet and update the progress bar.
     :param url: The URL of the file to download
     :param pbar: The tqdm progress bar to update
+    :param downloaded_data_path: Path to the directory to save the downloaded files
     :return: None
     """
     filename = url.split("/")[-1]
-    file_path = join("downloaded_data", filename)
+    file_path = join(downloaded_data_path, filename)
 
     # Check if the file already exists
     if exists(file_path):

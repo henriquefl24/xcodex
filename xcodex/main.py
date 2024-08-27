@@ -1,6 +1,7 @@
 from glob import glob
 from ntpath import join
 from os import getcwd, makedirs
+from os.path import join
 import pandas as pd
 import xarray as xr
 from numpy import nan
@@ -26,7 +27,7 @@ def xco2_extract(start: str, end: str, missing_data=False, downloaded_data_path=
 
     date_list = calendar_days(start, end)
     links = generate_links(date_list)
-    download(links)
+    download(links, downloaded_data_path)
 
     if downloaded_data_path is None:
         downloaded_data_path = join(getcwd(), "downloaded_data")
