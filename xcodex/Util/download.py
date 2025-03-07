@@ -133,19 +133,19 @@ def download_file_with_progress_aria2c(url: str, pbar, downloaded_data_path: str
         pbar.update(file_size)
         return
 
-    retries = 0 # Number of retries
-    max_retries = 20 # Maximum number of retries
-    backoff_factor = 0.5 # Backoff factor for exponential backoff
+    retries = 0  # Number of retries
+    max_retries = 20  # Maximum number of retries
+    backoff_factor = 0.5  # Backoff factor for exponential backoff
 
-    while retries < max_retries: # Retry loop
+    while retries < max_retries:  # Retry loop
         try:
             command = [
                 'aria2c',
-                '-x', '16', # 16 simultaneous connections
-                '-s', '16', # 16 connections per server
-                '-k', '2M', # 2 MB chunk size
-                '--retry-wait', '5', # Retry wait time
-                '--max-tries', '20', # Maximum number of retries
+                '-x', '16',  # 16 simultaneous connections
+                '-s', '16',  # 16 connections per server
+                '-k', '2M',  # 2 MB chunk size
+                '--retry-wait', '5',  # Retry wait time
+                '--max-tries', '20',  # Maximum number of retries
                 '-o', filename,
                 '-d', downloaded_data_path,
                 url,
@@ -170,7 +170,7 @@ def download_file_with_progress_aria2c(url: str, pbar, downloaded_data_path: str
             print("aria2c not found. Ensure it is installed and in the PATH.")
             break
         except Exception as e:
-            print(f"An unexpected error occurred {e}")
+            print(f"An unexpected error occurred: {e}")
             break
 
     else:
