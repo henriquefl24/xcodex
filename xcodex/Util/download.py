@@ -137,23 +137,23 @@ def download_file_with_progress_aria2c(url: str, pbar, downloaded_data_path: str
     max_retries = 20 # Maximum number of retries
     backoff_factor = 0.5 # Backoff factor for exponential backoff
 
-    while retries < max_retries:
+    while retries < max_retries: # Retry loop
         try:
             command = [
                 'aria2c',
-                '-x', '16',  # Número de conexões paralelas
-                '-s', '16',  # Número de conexões paralelas por servidor
-                '-k', '2M',  # Tamanho mínimo de segmento
-                '--retry-wait', '5',  # Tempo de espera entre tentativas
-                '--max-tries', '20',  # Número máximo de tentativas por arquivo
-                '-o', filename,  # Nome do arquivo de saída
-                '-d', downloaded_data_path,  # Diretório de saída
+                '-x', '16', # 16 simultaneous connections
+                '-s', '16', # 16 connections per server
+                '-k', '2M', # 2 MB chunk size
+                '--retry-wait', '5', # Retry wait time
+                '--max-tries', '20', # Maximum number of retries
+                '-o', filename,
+                '-d', downloaded_data_path,
                 url,
             ]
             result = subprocess.run(command, capture_output=True, text=True)
 
             if result.returncode == 0:
-                print(f'Download de {filename} concluído com sucesso.')
+                print(f'Download of {filename} completed successfully.')
                 # Update progress bar with the full file size after successful download
                 file_size = 3.20 * 1024 * 1024
                 pbar.update(file_size)
@@ -163,15 +163,15 @@ def download_file_with_progress_aria2c(url: str, pbar, downloaded_data_path: str
                 sleep(backoff_factor * (2 ** retries))
                 continue
             else:
-                print(f'Erro ao baixar {filename}: {result.stderr}, return code: {result.returncode}')
+                print(f'Error downloading {filename}: {result.stderr}, return code: {result.returncode}')
                 break
 
         except FileNotFoundError:
-            print("aria2c não encontrado. Certifique-se de que está instalado e no PATH.")
+            print("aria2c not found. Ensure it is installed and in the PATH.")
             break
         except Exception as e:
-            print(f"Ocorreu um erro inesperado: {e}")
+            print(f"An unexpected error occurred {e}")
             break
 
     else:
-        print(f"Falha ao baixar {filename} após {max_retries} tentativas.")
+        print(f"Failed to download {filename} after {max_retries} attempts.")
