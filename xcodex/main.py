@@ -14,7 +14,7 @@ from xcodex.Util.var_imp import variables
 from datetime import datetime
 
 def xco2_extract(start: str, end: str, downloaded_data_path=None,
-                 method="requests", output_format="csv", **kwargs: dict) -> pd.DataFrame:
+                 method="requests", output_format="csv", display_variables:list=None, **kwargs: dict) -> pd.DataFrame:
     """
     This method extracts XCO2 data from the specified date range and locations.
     :param start: Start date in the format "DD of Month, YYYY"
@@ -22,6 +22,9 @@ def xco2_extract(start: str, end: str, downloaded_data_path=None,
     :param downloaded_data_path: Path to the directory where the downloaded files are saved
     :param method: Method to use for downloading the files. Options are "requests" and "aria2c"
     :param output_format: Format to save the output file. Options are "csv", "excel", "json", "parquet", and "hdf5"
+    :param display_variables: List of variables to display in the final DataFrame. If None, all variables are displayed.
+                              Variables options are 'location', 'lat', 'lon', 'lat_grid', 'lon_grid', 'XCO2', 'XCO2PREC',
+                                                    'year', 'month', 'day', 'jd'
     :param kwargs: Dictionary of locations with latitude and longitude
     :return: DataFrame with extracted data
     """
@@ -115,6 +118,10 @@ def xco2_extract(start: str, end: str, downloaded_data_path=None,
     # Calculate the number of missing days
     missing_days = total_days - unique_days
     print(f"Missing days: {missing_days}")
+
+    # Filter the DataFrame to display only the selected variables
+    if display_variables is not None:
+        dataframe = dataframe[display_variables]
 
     # Save dataframe to file in `outputs` directory
     output_dir = join(getcwd(), "outputs")
