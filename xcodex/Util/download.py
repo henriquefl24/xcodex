@@ -1,7 +1,9 @@
+import subprocess
 from concurrent.futures import ThreadPoolExecutor
 from getpass import getpass
 from os import makedirs, getcwd
-from os.path import expanduser, join, exists
+from os.path import expanduser
+from os.path import join, exists
 from time import sleep
 
 import requests
@@ -49,7 +51,7 @@ def download(links: list, downloaded_data_path: str = None):
             pbar.update(total_size)  # Complete the progress bar if all files are already downloaded
         else:
             with ThreadPoolExecutor() as executor:
-                futures = [executor.submit(download_file_with_progress, link, pbar, downloaded_data_path) for link in
+                futures = [executor.submit(download_file_with_progress_aria2c, link, pbar, downloaded_data_path) for link in
                            nc4_links]
                 for future in futures:
                     future.result()
@@ -104,3 +106,62 @@ def download_file_with_progress(url: str, pbar, downloaded_data_path: str):
             sleep(backoff_factor * (2 ** retries))
     else:
         print(f"Failed to download {filename} after {max_retries} attempts.")
+
+
+def download_file_with_progress_aria2c(url: str, pbar, downloaded_data_path: str):
+    """
+    Download a file from the internet using aria2c and update the progress bar.
+    :param url: The URL of the file to download
+    :param pbar: The tqdm progress bar to update
+    :param downloaded_data_path: Path to the directory to save the downloaded files
+    :return: None
+    """
+    filename = url.split("/")[-1]
+    file_path = join(downloaded_data_path, filename)
+
+    # Check if the file already exists
+    if exists(file_path):
+        file_size = 3.20 * 1024 * 1024  # Approximate size of the file in bytes
+        pbar.update(file_size)
+        return
+
+    retries = 0
+    max_retries = 10
+    backoff_factor = 0.3
+
+    while retries < max_retries:
+        try:
+            command = [
+                'aria2c',
+                '-x', '16',  # Número de conexões paralelas
+                '-s', '16',  # Número de conexões paralelas por servidor
+                '-k', '1M',  # Tamanho mínimo de segmento
+                '-o', filename,  # Nome do arquivo de saída
+                '-d', downloaded_data_path, # Diretório de saída
+                url,
+            ]
+            result = subprocess.run(command, capture_output=True, text=True)
+
+            if result.returncode == 0:
+                print(f'Download de {filename} concluído com sucesso.')
+                # Update progress bar with the full file size after successful download
+                file_size = 3.20 * 1024 * 1024
+                pbar.update(file_size)
+                break
+            elif "503 Service Unavailable" in result.stderr:
+                retries += 1
+                sleep(backoff_factor * (2 ** retries))
+                continue
+            else:
+                print(f'Erro ao baixar {filename}: {result.stderr}')
+                break
+
+        except FileNotFoundError:
+            print("aria2c não encontrado. Certifique-se de que está instalado e no PATH.")
+            break
+        except Exception as e:
+            print(f"Ocorreu um erro inesperado: {e}")
+            break
+
+    else:
+        print(f"Falha ao baixar {filename} após {max_retries} tentativas.")
