@@ -55,7 +55,6 @@ def download(links: list, downloaded_data_path: str = None):
                     future.result()
 
 
-# Atualizar a função download_file_with_progress para aceitar o parâmetro downloaded_data_path
 def download_file_with_progress(url: str, pbar, downloaded_data_path: str):
     """
     Download a file from the internet and update the progress bar.

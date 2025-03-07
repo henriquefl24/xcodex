@@ -1,7 +1,4 @@
-from netCDF4 import Dataset
-
-
-def check_date(calendar_list, xco2_netCDF4: Dataset) -> bool:
+def check_date(calendar_list, xco2_netCDF4) -> bool:
     """
     This routine will check if the calendar year matches with the current file
     """
