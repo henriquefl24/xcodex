@@ -10,16 +10,15 @@ from xcodex.Util.date import calendar_days
 from xcodex.Util.download import download
 from xcodex.Util.generate_links import generate_links
 from xcodex.Util.make_Dataframe import make_dataframe
-from xcodex.Util.missing import new_subset
 from xcodex.Util.var_imp import variables
+from datetime import datetime
 
-
-def xco2_extract(start: str, end: str, missing_data=False, downloaded_data_path=None, method="requests", output_format="csv", **kwargs: dict) -> pd.DataFrame:
+def xco2_extract(start: str, end: str, downloaded_data_path=None,
+                 method="requests", output_format="csv", **kwargs: dict) -> pd.DataFrame:
     """
     This method extracts XCO2 data from the specified date range and locations.
     :param start: Start date in the format "DD of Month, YYYY"
     :param end: End date in the format "DD of Month, YYYY"
-    :param missing_data: Fill missing data if True
     :param downloaded_data_path: Path to the directory where the downloaded files are saved
     :param method: Method to use for downloading the files. Options are "requests" and "aria2c"
     :param output_format: Format to save the output file. Options are "csv", "excel", "json", "parquet", and "hdf5"
@@ -100,14 +99,22 @@ def xco2_extract(start: str, end: str, missing_data=False, downloaded_data_path=
     # Create a DataFrame from the extracted data
     dataframe = make_dataframe(location, jd, day, month, year, lat, lon, lat_grid, lon_grid, XCO2, XCO2PREC)
 
-    # Fill missing data if required
-    if missing_data:
-        new_subset(dataframe)
-
     # Set dataframe index to location
     dataframe.set_index('location', inplace=True, drop=True)
     dataframe = dataframe.astype(float)
     dataframe.reset_index(inplace=True, drop=False)
+
+    # Calculate the total number of days in the date range
+    start_date = datetime.strptime(start, "%d of %B, %Y")
+    end_date = datetime.strptime(end, "%d of %B, %Y")
+    total_days = (end_date - start_date).days + 1
+
+    # Calculate the number of unique days present in the dataframe
+    unique_days = dataframe['day'].nunique()
+
+    # Calculate the number of missing days
+    missing_days = total_days - unique_days
+    print(f"Missing days: {missing_days}")
 
     # Save dataframe to file in `outputs` directory
     output_dir = join(getcwd(), "outputs")
@@ -127,7 +134,8 @@ def xco2_extract(start: str, end: str, missing_data=False, downloaded_data_path=
     elif output_format == 'hdf5':
         dataframe.to_hdf(path_save, key='data', mode='w')
     else:
-        raise ValueError(f"Invalid output format: {output_format}. Supported formats are 'csv', 'excel', 'json', 'parquet', and 'hdf5'.")
+        raise ValueError(f"Invalid output format: {output_format}. Supported formats are 'csv', 'excel', 'json'"
+                         f", 'parquet', and 'hdf5'.")
 
     # Return dataframe
     return dataframe
