@@ -14,7 +14,17 @@ from xcodex.Util.missing import new_subset
 from xcodex.Util.var_imp import variables
 
 
-def xco2_extract(start: str, end: str, missing_data=False, downloaded_data_path=None, **kwargs: dict) -> pd.DataFrame:
+def xco2_extract(start: str, end: str, missing_data=False, downloaded_data_path=None, method="requests",**kwargs: dict) -> pd.DataFrame:
+    """
+    This method extracts XCO2 data from the specified date range and locations.
+    :param start: Start date in the format "DD of Month, YYYY"
+    :param end: End date in the format "DD of Month, YYYY"
+    :param missing_data: Fill missing data if True
+    :param downloaded_data_path: Path to the directory where the downloaded files are saved
+    :param method: Method to use for downloading the files. Options are "requests" and "aria2c"
+    :param kwargs: Dictionary of locations with latitude and longitude
+    :return: DataFrame with extracted data
+    """
     # Initialize variables
     (location, lat, lat_grid, lon, lon_grid, XCO2, XCO2PREC, year, month, day, jd, fmt) = variables()
 
@@ -25,7 +35,7 @@ def xco2_extract(start: str, end: str, missing_data=False, downloaded_data_path=
     links = generate_links(date_list)
 
     # Download the data
-    download(links, downloaded_data_path)
+    download(links, downloaded_data_path, method)
 
     # If downloaded data path is not provided, use "downloaded_data" directory in current working directory as default
     if downloaded_data_path is None:

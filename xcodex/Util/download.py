@@ -14,9 +14,13 @@ from xcodex.Util.create_dodsrc import create_dodsrc
 from xcodex.Util.create_netrc import create_netrc
 
 
-def download(links: list, downloaded_data_path: str = None):
+def download(links: list, downloaded_data_path: str = None, method="requests"):
     """
     This method downloads .nc4 files from the provided links and saves them to the specified path.
+    :param links: List of links to download
+    :param downloaded_data_path: Path to the directory to save the downloaded files
+    :param method: Method to use for downloading the files. Options are "requests" and "aria2c"
+    :return: None
     """
     home_dir = expanduser("~")
     netrc_path = join(home_dir, ".netrc")
@@ -51,8 +55,12 @@ def download(links: list, downloaded_data_path: str = None):
             pbar.update(total_size)  # Complete the progress bar if all files are already downloaded
         else:
             with ThreadPoolExecutor() as executor:
-                futures = [executor.submit(download_file_with_progress_aria2c, link, pbar, downloaded_data_path) for link in
-                           nc4_links]
+                if method == "requests":
+                    futures = [executor.submit(download_file_with_progress, link, pbar, downloaded_data_path) for link in nc4_links]
+                elif method == "aria2c":
+                    futures = [executor.submit(download_file_with_progress_aria2c, link, pbar, downloaded_data_path) for link in nc4_links]
+                else:
+                    raise ValueError(f"Unknown download method: {method}")
                 for future in futures:
                     future.result()
 
@@ -125,9 +133,9 @@ def download_file_with_progress_aria2c(url: str, pbar, downloaded_data_path: str
         pbar.update(file_size)
         return
 
-    retries = 0
-    max_retries = 10
-    backoff_factor = 0.3
+    retries = 0 # Number of retries
+    max_retries = 20 # Maximum number of retries
+    backoff_factor = 0.5 # Backoff factor for exponential backoff
 
     while retries < max_retries:
         try:
@@ -135,9 +143,11 @@ def download_file_with_progress_aria2c(url: str, pbar, downloaded_data_path: str
                 'aria2c',
                 '-x', '16',  # Número de conexões paralelas
                 '-s', '16',  # Número de conexões paralelas por servidor
-                '-k', '1M',  # Tamanho mínimo de segmento
+                '-k', '2M',  # Tamanho mínimo de segmento
+                '--retry-wait', '5',  # Tempo de espera entre tentativas
+                '--max-tries', '20',  # Número máximo de tentativas por arquivo
                 '-o', filename,  # Nome do arquivo de saída
-                '-d', downloaded_data_path, # Diretório de saída
+                '-d', downloaded_data_path,  # Diretório de saída
                 url,
             ]
             result = subprocess.run(command, capture_output=True, text=True)
@@ -153,7 +163,7 @@ def download_file_with_progress_aria2c(url: str, pbar, downloaded_data_path: str
                 sleep(backoff_factor * (2 ** retries))
                 continue
             else:
-                print(f'Erro ao baixar {filename}: {result.stderr}')
+                print(f'Erro ao baixar {filename}: {result.stderr}, return code: {result.returncode}')
                 break
 
         except FileNotFoundError:
