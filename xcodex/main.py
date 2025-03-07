@@ -14,7 +14,7 @@ from xcodex.Util.missing import new_subset
 from xcodex.Util.var_imp import variables
 
 
-def xco2_extract(start: str, end: str, missing_data=False, downloaded_data_path=None, method="requests",**kwargs: dict) -> pd.DataFrame:
+def xco2_extract(start: str, end: str, missing_data=False, downloaded_data_path=None, method="requests", output_format="csv", **kwargs: dict) -> pd.DataFrame:
     """
     This method extracts XCO2 data from the specified date range and locations.
     :param start: Start date in the format "DD of Month, YYYY"
@@ -22,6 +22,7 @@ def xco2_extract(start: str, end: str, missing_data=False, downloaded_data_path=
     :param missing_data: Fill missing data if True
     :param downloaded_data_path: Path to the directory where the downloaded files are saved
     :param method: Method to use for downloading the files. Options are "requests" and "aria2c"
+    :param output_format: Format to save the output file. Options are "csv", "excel", "json", "parquet", and "hdf5"
     :param kwargs: Dictionary of locations with latitude and longitude
     :return: DataFrame with extracted data
     """
@@ -108,11 +109,25 @@ def xco2_extract(start: str, end: str, missing_data=False, downloaded_data_path=
     dataframe = dataframe.astype(float)
     dataframe.reset_index(inplace=True, drop=False)
 
-    # Save dataframe to csv in `outputs` directory
+    # Save dataframe to file in `outputs` directory
     output_dir = join(getcwd(), "outputs")
     makedirs(output_dir, exist_ok=True)
-    path_save = join(output_dir, "XCO2_data.csv")
-    dataframe.to_csv(path_save, index=False)
+    file_name = "XCO2_data"
+    path_save = join(output_dir, f"{file_name}.{output_format}")
+
+    if output_format == "csv":
+        dataframe.to_csv(path_save, index=False)
+    elif output_format == "excel":
+        path_save = join(output_dir, f"{file_name}.xlsx")
+        dataframe.to_excel(path_save, index=False)
+    elif output_format == "json":
+        dataframe.to_json(path_save)
+    elif output_format == "parquet":
+        dataframe.to_parquet(path_save, index=False)
+    elif output_format == 'hdf5':
+        dataframe.to_hdf(path_save, key='data', mode='w')
+    else:
+        raise ValueError(f"Invalid output format: {output_format}. Supported formats are 'csv', 'excel', 'json', 'parquet', and 'hdf5'.")
 
     # Return dataframe
     return dataframe

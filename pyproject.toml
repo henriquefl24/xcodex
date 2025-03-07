@@ -6,6 +6,10 @@ requires = [
 	"requests~=2.31.0",
 	"setuptools==67.8.0",
 	"tqdm>=4.62.3",
+	"tables==3.10.2",
+	"openpyxl==3.1.5",
+	"pyarrow==19.0.1",
+	"fastparquet==2024.11.0",
 	"jupyter==1.0.0"]
 build-backend = "setuptools.build_meta"
 
@@ -32,6 +36,7 @@ classifiers = [
  		"Programming Language :: Python :: 3.9",
 		"Programming Language :: Python :: 3.10",
 		"Programming Language :: Python :: 3.11",
+		"Programming Language :: Python :: 3.12",
     	"Operating System :: Unix",
     	"Operating System :: MacOS :: MacOS X",
     	"Operating System :: Microsoft :: Windows"]

@@ -5,3 +5,7 @@ requests~=2.32.3
 setuptools>=67.8.0
 tqdm>=4.62.3
 xarray==2023.10.1
+tables==3.10.2
+openpyxl==3.1.5
+pyarrow==19.0.1
+fastparquet==2024.11.0
