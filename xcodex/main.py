@@ -23,8 +23,9 @@ def xco2_extract(start: str, end: str, downloaded_data_path=None,
     :param method: Method to use for downloading the files. Options are "requests" and "aria2c"
     :param output_format: Format to save the output file. Options are "csv", "excel", "json", "parquet", and "hdf5"
     :param display_variables: List of variables to display in the final DataFrame. If None, all variables are displayed.
-                              Variables options are 'location', 'lat', 'lon', 'lat_grid', 'lon_grid', 'XCO2', 'XCO2PREC',
-                                                    'year', 'month', 'day', 'jd'
+                              Variables options are:
+                              ['location', 'lat', 'lon', 'lat_grid', 'lon_grid', 'XCO2', 'XCO2PREC',
+                              'year', 'month', 'day', 'jd']
     :param kwargs: Dictionary of locations with latitude and longitude
     :return: DataFrame with extracted data
     """
