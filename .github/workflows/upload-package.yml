@@ -12,7 +12,7 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v3
       with:
-        python-version: '3.9'
+        python-version: '3.12'
     - name: Set PKG_CONFIG_PATH
       run: sudo apt-get install libhdf5-serial-dev
     - name: Install dependencies
