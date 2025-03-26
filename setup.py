@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-VERSION = "2.3.0"
+VERSION = "2.3.1"
 DESCRIPTION = """This package will download and extract daily data of XCO2 from the NASA Goddard Earth Sciences (GES)
                  Data and Information Services Center (DISC)"
               Source citation: Brad Weir, Lesley Ott and OCO-2 Science Team (2022), OCO-2 GEOS Level 3 daily,
