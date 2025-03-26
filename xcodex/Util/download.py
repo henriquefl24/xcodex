@@ -2,8 +2,7 @@ import subprocess
 from concurrent.futures import ThreadPoolExecutor
 from getpass import getpass
 from os import makedirs, getcwd
-from os.path import expanduser
-from os.path import join, exists
+from os.path import expanduser, join, exists
 from time import sleep
 
 import requests
@@ -13,7 +12,6 @@ from tqdm.notebook import tqdm
 from xcodex.Util.create_dodsrc import create_dodsrc
 from xcodex.Util.create_netrc import create_netrc
 
-
 def download(links: list, downloaded_data_path: str = None, method="requests"):
     """
     This method downloads .nc4 files from the provided links and saves them to the specified path.
@@ -22,6 +20,18 @@ def download(links: list, downloaded_data_path: str = None, method="requests"):
     :param method: Method to use for downloading the files. Options are "requests" and "aria2c"
     :return: None
     """
+    # Validate links
+    if not isinstance(links, list) or not all(isinstance(link, str) for link in links):
+        raise ValueError("Links must be a list of strings")
+
+    # Validate downloaded_data_path
+    if downloaded_data_path is not None and not isinstance(downloaded_data_path, str):
+        raise ValueError("Downloaded data path must be a string")
+
+    # Validate method
+    if method not in ["requests", "aria2c"]:
+        raise ValueError("Method must be either 'requests' or 'aria2c'")
+
     home_dir = expanduser("~")
     netrc_path = join(home_dir, ".netrc")
     dodsrc_path = join(home_dir, ".dodsrc")

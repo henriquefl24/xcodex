@@ -1,6 +1,6 @@
+import os
+from datetime import datetime
 from glob import glob
-from os import getcwd, makedirs
-from os.path import join
 
 import pandas as pd
 import xarray as xr
@@ -11,10 +11,10 @@ from xcodex.Util.download import download
 from xcodex.Util.generate_links import generate_links
 from xcodex.Util.make_Dataframe import make_dataframe
 from xcodex.Util.var_imp import variables
-from datetime import datetime
+from xcodex.Util.error_handling import validate_inputs
 
 def xco2_extract(start: str, end: str, downloaded_data_path=None,
-                 method="requests", output_format="csv", display_variables:list=None, **kwargs: dict) -> pd.DataFrame:
+                 method="requests", output_format="csv", display_variables: list = None, **kwargs: dict) -> pd.DataFrame:
     """
     This method extracts XCO2 data from the specified date range and locations.
     :param start: Start date in the format "DD of Month, YYYY"
@@ -29,6 +29,10 @@ def xco2_extract(start: str, end: str, downloaded_data_path=None,
     :param kwargs: Dictionary of locations with latitude and longitude
     :return: DataFrame with extracted data
     """
+
+    # Validate inputs
+    validate_inputs(start, end, downloaded_data_path, method, output_format, display_variables, **kwargs)
+
     # Initialize variables
     (location, lat, lat_grid, lon, lon_grid, XCO2, XCO2PREC, year, month, day, jd, fmt) = variables()
 
@@ -43,10 +47,10 @@ def xco2_extract(start: str, end: str, downloaded_data_path=None,
 
     # If downloaded data path is not provided, use "downloaded_data" directory in current working directory as default
     if downloaded_data_path is None:
-        downloaded_data_path = join(getcwd(), "downloaded_data")
+        downloaded_data_path = os.path.join(os.getcwd(), "downloaded_data")
 
     # Get all the .nc4 files in the directory
-    path = glob(join(downloaded_data_path, "*.nc4"))
+    path = glob(os.path.join(downloaded_data_path, "*.nc4"))
 
     # Iterate through the .nc4 files
     for file_path in path:
@@ -125,15 +129,15 @@ def xco2_extract(start: str, end: str, downloaded_data_path=None,
         dataframe = dataframe[display_variables]
 
     # Save dataframe to file in `outputs` directory
-    output_dir = join(getcwd(), "outputs")
-    makedirs(output_dir, exist_ok=True)
+    output_dir = os.path.join(os.getcwd(), "outputs")
+    os.makedirs(output_dir, exist_ok=True)
     file_name = "XCO2_data"
-    path_save = join(output_dir, f"{file_name}.{output_format}")
+    path_save = os.path.join(output_dir, f"{file_name}.{output_format}")
 
     if output_format == "csv":
         dataframe.to_csv(path_save, index=False)
     elif output_format == "excel":
-        path_save = join(output_dir, f"{file_name}.xlsx")
+        path_save = os.path.join(output_dir, f"{file_name}.xlsx")
         dataframe.to_excel(path_save, index=False)
     elif output_format == "json":
         dataframe.to_json(path_save)
@@ -142,8 +146,7 @@ def xco2_extract(start: str, end: str, downloaded_data_path=None,
     elif output_format == 'hdf5':
         dataframe.to_hdf(path_save, key='data', mode='w')
     else:
-        raise ValueError(f"Invalid output format: {output_format}. Supported formats are 'csv', 'excel', 'json'"
-                         f", 'parquet', and 'hdf5'.")
+        raise ValueError(f"Invalid output format: {output_format}. Supported formats are 'csv', 'excel', 'json', 'parquet', and 'hdf5'.")
 
     # Return dataframe
     return dataframe
