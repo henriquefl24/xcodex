@@ -45,7 +45,7 @@ def xco2_extract(start: str, end: str, downloaded_data_path=None,
     if downloaded_data_path is None:
         downloaded_data_path = join(getcwd(), "downloaded_data")
 
-        # Get all the .nc4 files in the directory
+    # Get all the .nc4 files in the directory
     path = glob(join(downloaded_data_path, "*.nc4"))
 
     # Iterate through the .nc4 files
