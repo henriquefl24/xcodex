@@ -21,13 +21,12 @@ setup(name='xcodex',
           "Development Status :: 5 - Production/Stable",
           "Intended Audience :: Developers",
           "License :: OSI Approved :: MIT License",
-          "Programming Language :: Python :: 3.9",
-          "Programming Language :: Python :: 3.10",
-          "Programming Language :: Python :: 3.11",
+          "Programming Language :: Python :: 3.12",
           "Operating System :: Unix",
           "Operating System :: MacOS :: MacOS X",
           "Operating System :: Microsoft :: Windows"],
       package_dir={"": "."},
-      python_requires=">=3.9",
-      install_requires=['pandas', 'numpy', "xarray", 'jupyter', 'requests', 'setuptools', 'tqdm']
+      python_requires=">=3.12",
+      install_requires=['fastparquet','h5netcdf','jupyter','netcdf4','numpy','openpyxl','pandas','pyarrow',
+                        'requests','scipy','setuptools','tables','tqdm','wheel','xarray']
       )
