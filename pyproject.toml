@@ -20,7 +20,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "xcodex"
-version = "2.3.0"
+version = "2.3.3"
 dynamic = ["keywords", "dependencies"]
 authors = [
   {name="Henrique Fontellas Laurito", email="henrique.f.laurito@unesp.br" }
