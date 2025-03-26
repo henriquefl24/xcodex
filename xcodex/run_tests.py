@@ -4,7 +4,7 @@ import os
 
 def run_all_tests():
     # Get the absolute path of the 'tests' directory
-    start_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'tests'))
+    start_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', "xcodex",'tests'))
 
     # Discover all test files in the 'tests' directory
     loader = unittest.TestLoader()
