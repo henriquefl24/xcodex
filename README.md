@@ -153,6 +153,10 @@ https://github.com/sagarlimbu0/OCO2-OCO3
 Laurito, H., La Scala, N., Rolim, G. S., 2023. Extracting XCO2-NASA Daily data with XCODEX:
 A Python package designed for data extraction and structuration. Jaboticabal, SP, BR, (...)
 
+### *Acknowledgments*:
+We would like to express our gratitude to Coordination for the Improvement of Higher Education Personnel (CAPES) for their
+financial support and the opportunity to develop this project. We also acknowledge the funding provided for project No. 130068/2022-5
+by the National Council for Scientific and Technological Development (CNPq)
 
 ### **Data source citation**:
 
